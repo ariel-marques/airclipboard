@@ -65,3 +65,4 @@ Carthage/Build
 # --------------------------
 *.env
 *.orig
+.DS_Store
