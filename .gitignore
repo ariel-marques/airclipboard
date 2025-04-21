@@ -1,0 +1,67 @@
+# --------------------------
+# 📁 Xcode
+# --------------------------
+.DS_Store
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
+
+# Workspace
+*.xcworkspace/
+!default.xcworkspace
+
+# Playground
+timeline.xctimeline
+playground.xcworkspace
+
+# SwiftPM
+.swiftpm/
+.build/
+
+# CocoaPods (caso use futuramente)
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build
+
+# --------------------------
+# 🧪 Testes / CI
+# --------------------------
+*.gcno
+
+# --------------------------
+# 📦 Output
+# --------------------------
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.app
+*.xcarchive
+
+# --------------------------
+# 📂 Logs e backups
+# --------------------------
+*.log
+*.swp
+*.swo
+*~.nib
+*~.swp
+
+# --------------------------
+# 📄 Config pessoal
+# --------------------------
+*.env
+*.orig
