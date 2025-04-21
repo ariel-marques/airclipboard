@@ -31,6 +31,8 @@ extension ClipboardItem {
             return a == b
         case (.image(let a), .image(let b)):
             return a == b
+        case (.fileGroup(let a), .fileGroup(let b)):
+            return Set(a) == Set(b)
         default:
             return false
         }

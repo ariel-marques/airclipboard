@@ -131,7 +131,7 @@ struct ClipboardItemView: View {
                     ForEach(urls.prefix(6), id: \.self) { url in
                         FileIconView(fileURL: url)
                             .frame(width: 40, height: 40)
-                            .cornerRadius(6)
+                            .cornerRadius(2)
                             .help(url.lastPathComponent) // ✅ Tooltip individual
                     }
 
@@ -147,4 +147,8 @@ struct ClipboardItemView: View {
             }
         }
     }
+}
+
+#Preview {
+    ContentView()
 }

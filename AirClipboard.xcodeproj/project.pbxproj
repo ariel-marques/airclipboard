@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB8507132DB5CCBA0016A3D2 /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8507122DB5CCB90016A3D2 /* QuickLookThumbnailing.framework */; };
 		ABBAC6EE2DA8BA2200B7D14D /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = ABBAC6ED2DA8BA2200B7D14D /* HotKey */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AB0B302C2D9CE7FB003713A9 /* AirClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8507122DB5CCB90016A3D2 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/PrivateFrameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -40,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB8507132DB5CCBA0016A3D2 /* QuickLookThumbnailing.framework in Frameworks */,
 				ABBAC6EE2DA8BA2200B7D14D /* HotKey in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0B302E2D9CE7FB003713A9 /* AirClipboard */,
+				AB8507112DB5CCB90016A3D2 /* Frameworks */,
 				AB0B302D2D9CE7FB003713A9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +65,14 @@
 				AB0B302C2D9CE7FB003713A9 /* AirClipboard.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AB8507112DB5CCB90016A3D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB8507122DB5CCB90016A3D2 /* QuickLookThumbnailing.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +304,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -322,6 +338,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};
