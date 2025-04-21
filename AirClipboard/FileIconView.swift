@@ -12,6 +12,7 @@ import QuickLookThumbnailing
 struct FileIconView: View {
     let fileURL: URL
     @State private var thumbnailImage: NSImage?
+    @State private var failedToLoadThumbnail = false
 
     private let imageExtensions = ["png", "jpg", "jpeg", "gif", "heic"]
 
@@ -23,8 +24,19 @@ struct FileIconView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32, height: 32)
                     .clipShape(RoundedRectangle(cornerRadius: 6))
+            } else if isImage(fileURL), failedToLoadThumbnail {
+                // 📸 Ícone padrão para imagens quando a thumbnail falha
+                Image(systemName: "photo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 24, height: 24)
+                    .padding(8)
+                    .background(Color.gray.opacity(0.2))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             } else if isImage(fileURL) {
-                ImageThumbnailView(fileURL: fileURL)
+                // 🔄 Enquanto carrega a thumbnail (fallback temporário)
+                ProgressView()
+                    .frame(width: 32, height: 32)
             } else {
                 Image(systemName: iconForFileType(fileURL.pathExtension.lowercased()))
                     .resizable()
@@ -35,9 +47,7 @@ struct FileIconView: View {
             }
         }
         .onAppear {
-            if !isImage(fileURL) {
-                generateThumbnail(for: fileURL)
-            }
+            generateThumbnail(for: fileURL)
         }
     }
 
@@ -55,6 +65,8 @@ struct FileIconView: View {
     }
 
     private func generateThumbnail(for url: URL) {
+        guard !failedToLoadThumbnail else { return }
+
         let size = CGSize(width: 64, height: 64)
         let scale = NSScreen.main?.backingScaleFactor ?? 2.0
 
@@ -70,8 +82,13 @@ struct FileIconView: View {
                 DispatchQueue.main.async {
                     self.thumbnailImage = NSImage(cgImage: cgImage, size: size)
                 }
-            } else if let error = error {
-                print("❌ Falha ao gerar thumbnail para \(url.lastPathComponent): \(error.localizedDescription)")
+            } else {
+                DispatchQueue.main.async {
+                    self.failedToLoadThumbnail = true
+                    if let error = error {
+                        print("⚠️ Falha ao gerar thumbnail para imagem \(url.lastPathComponent): \(error.localizedDescription)")
+                    }
+                }
             }
         }
     }

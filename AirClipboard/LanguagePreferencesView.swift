@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LanguagePreferencesView: View {
-    enum AppLanguage: String, CaseIterable, Identifiable {
+    enum AppLanguage: String, CaseIterable, Identifiable, Codable {
         case system
         case english = "en"
         case portuguese = "pt"
@@ -32,20 +32,27 @@ struct LanguagePreferencesView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            Picker("Idioma do aplicativo:", selection: $selectedLanguage) {
-                ForEach(AppLanguage.allCases) { language in
-                    Text(language.label).tag(language)
+            VStack(alignment: .leading, spacing: 8) {
+                Picker("Idioma do aplicativo", selection: $selectedLanguage) {
+                    ForEach(AppLanguage.allCases) { language in
+                        Text(language.label).tag(language)
+                    }
                 }
-            }
-            .pickerStyle(.radioGroup)
+                .pickerStyle(.menu) // 👈 estilo pull-down
+                .frame(width: 300)
 
-            Text("Você pode precisar reiniciar o aplicativo para aplicar a mudança.")
-                .font(.caption)
-                .foregroundColor(.secondary)
+                Text("Você pode precisar reiniciar o aplicativo para aplicar a mudança.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
 
             Spacer()
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
     }
+}
+
+#Preview {
+    LanguagePreferencesView()
 }

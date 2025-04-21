@@ -14,6 +14,7 @@ enum PreferencesSection: String, CaseIterable, Identifiable {
     case language = "Idioma"
     case advanced = "Avançado"
     case license = "Licença"
+    case about = "Sobre"
 
     var id: String { self.rawValue }
 
@@ -25,6 +26,7 @@ enum PreferencesSection: String, CaseIterable, Identifiable {
         case .language: return "globe"
         case .advanced: return "slider.horizontal.3"
         case .license: return "key"
+        case .about: return "laptopcomputer"
         }
     }
 }
@@ -73,6 +75,8 @@ struct PreferencesView: View {
             AdvancedPreferencesView()
         case .license:
             LicensePreferencesView()
+        case .about:
+            AboutPreferencesView()
         }
     }
 }

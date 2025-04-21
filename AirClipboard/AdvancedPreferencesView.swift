@@ -12,18 +12,43 @@ struct AdvancedPreferencesView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
+            // Título
             Text("Avançado")
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            Stepper(value: $maxFileSizeMB, in: 1...100) {
-                Text("Tamanho máximo do arquivo: \(maxFileSizeMB) MB")
+            // Campo com número e stepper
+            HStack(spacing: 12) {
+                Text("Tamanho máximo (MB):")
+                    .fontWeight(.medium)
+                    .padding(.trailing, 20)
+
+                Text("\(maxFileSizeMB)")
+                    .font(.body)
+                    .frame(width: 50)
+                    .padding(6)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(Color.gray.opacity(0.3))
+                    )
+
+                Stepper("", value: $maxFileSizeMB, in: 1...100)
+                    .padding(.leading, -11)
+                    .frame(width: 0.1)
             }
-            .frame(maxWidth: 280)
+
+            Text("Defina o tamanho máximo para arquivos capturados pela área de transferência. O padrão é 10 MB.")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.leading)
 
             Spacer()
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
     }
+}
+
+#Preview {
+    AdvancedPreferencesView()
 }

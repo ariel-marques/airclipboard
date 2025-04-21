@@ -18,13 +18,18 @@ struct AppearancePreferencesView: View {
                 .fontWeight(.semibold)
 
             // Seletor de tema
-            Picker("Estilo de tema", selection: $selectedTheme) {
-                ForEach(AppTheme.allCases) { theme in
-                    Text(theme.label).tag(theme)
+            HStack(spacing: 12) {
+                Text("Estilo de tema:")
+                    .fontWeight(.medium)
+
+                Picker("", selection: $selectedTheme) {
+                    ForEach(AppTheme.allCases) { theme in
+                        Text(theme.label).tag(theme)
+                    }
                 }
+                .pickerStyle(.menu)
+                .frame(maxWidth: 180)
             }
-            .pickerStyle(.segmented)
-            .padding(.trailing, 60)
 
             Text("Escolha entre claro, escuro ou acompanhe o sistema.")
                 .font(.caption)
