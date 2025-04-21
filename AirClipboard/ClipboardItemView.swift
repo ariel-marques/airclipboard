@@ -112,7 +112,8 @@ struct ClipboardItemView: View {
                     .truncationMode(.middle)
                     .frame(width: 70)
             }
-
+            .help(url.lastPathComponent)
+            
         case .image(let data):
             if let nsImage = NSImage(data: data) {
                 Image(nsImage: nsImage)
