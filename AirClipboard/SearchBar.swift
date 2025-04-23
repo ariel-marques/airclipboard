@@ -26,9 +26,5 @@ struct SearchBar: View {
                 .fill(.quaternary.opacity(0.2))
         )
         .padding(.horizontal)
-        .padding(.bottom,8.0)
     }
-}
-#Preview {
-    ContentView()
 }

@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct AirClipboardApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @AppStorage("selectedAppTheme") private var selectedTheme: AppTheme = .system // ✅ Aqui estava faltando
 
     var body: some Scene {
         MenuBarExtra("", image: "MenuBarIcon") {
@@ -42,6 +41,5 @@ struct AirClipboardApp: App {
             Divider()
         }
         .menuBarExtraStyle(.window)
-        .preferredColorScheme(selectedTheme.colorScheme) // ✅ Agora vai funcionar com reatividade
     }
 }
