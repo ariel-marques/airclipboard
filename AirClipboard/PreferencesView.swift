@@ -9,7 +9,7 @@ import SwiftUI
 
 enum PreferencesSection: String, CaseIterable, Identifiable {
     case general = "Geral"
-    case appearance = "Aparência"
+    // case appearance = "Aparência"
     case history = "Histórico"
     case language = "Idioma"
     case advanced = "Avançado"
@@ -21,7 +21,7 @@ enum PreferencesSection: String, CaseIterable, Identifiable {
     var icon: String {
         switch self {
         case .general: return "gearshape"
-        case .appearance: return "paintbrush"
+        // case .appearance: return "paintbrush"
         case .history: return "clock.arrow.circlepath"
         case .language: return "globe"
         case .advanced: return "slider.horizontal.3"
@@ -65,8 +65,8 @@ struct PreferencesView: View {
         switch section {
         case .general:
             GeneralPreferencesView()
-        case .appearance:
-            AppearancePreferencesView()
+        //case .appearance:
+        //  AppearancePreferencesView()
         case .history:
             HistoryPreferencesView()
         case .language:

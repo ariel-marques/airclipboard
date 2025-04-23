@@ -171,7 +171,7 @@ struct ClipboardItemView: View {
                         Text("+\(urls.count - 6)")
                             .font(.caption)
                             .foregroundColor(.secondary)
-                            .padding(.leading, -11)
+                            .padding(.leading, 1)
                             .help(urls.dropFirst(6).map { $0.lastPathComponent }.joined(separator: "\n"))
                     }
                 }
