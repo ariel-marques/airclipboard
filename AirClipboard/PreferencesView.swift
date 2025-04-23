@@ -8,25 +8,29 @@
 import SwiftUI
 
 enum PreferencesSection: String, CaseIterable, Identifiable {
-    case general = "Geral"
-    // case appearance = "Aparência"
-    case history = "Histórico"
-    case language = "Idioma"
-    case advanced = "Avançado"
-    case license = "Licença"
-    case about = "Sobre"
+    case general, history, language, advanced, license, about
 
-    var id: String { self.rawValue }
+    var id: String { rawValue }
 
     var icon: String {
         switch self {
         case .general: return "gearshape"
-        // case .appearance: return "paintbrush"
         case .history: return "clock.arrow.circlepath"
         case .language: return "globe"
         case .advanced: return "slider.horizontal.3"
         case .license: return "key"
         case .about: return "laptopcomputer"
+        }
+    }
+
+    var localizedTitle: String {
+        switch self {
+        case .general: return String(localized: "section_general")
+        case .history: return String(localized: "section_history")
+        case .language: return String(localized: "section_language")
+        case .advanced: return String(localized: "section_advanced")
+        case .license: return String(localized: "section_license")
+        case .about: return String(localized: "section_about")
         }
     }
 }
@@ -39,11 +43,11 @@ struct PreferencesView: View {
             // Sidebar
             VStack(alignment: .leading, spacing: 0) {
                 List(PreferencesSection.allCases, id: \.self, selection: $selectedSection) { section in
-                    Label(section.rawValue, systemImage: section.icon)
+                    Label(section.localizedTitle, systemImage: section.icon)
                         .padding(.vertical, 6)
                         .tag(section)
                 }
-                .listStyle(SidebarListStyle())
+                .listStyle(.sidebar) // ✅ Nova API mais semântica
             }
             .frame(minWidth: 180, idealWidth: 200, maxWidth: 220)
             .background(Color(NSColor.controlBackgroundColor))
@@ -65,8 +69,6 @@ struct PreferencesView: View {
         switch section {
         case .general:
             GeneralPreferencesView()
-        //case .appearance:
-        //  AppearancePreferencesView()
         case .history:
             HistoryPreferencesView()
         case .language:

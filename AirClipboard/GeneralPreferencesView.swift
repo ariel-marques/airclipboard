@@ -18,14 +18,14 @@ struct GeneralPreferencesView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             // Título da seção
-            Text("Geral")
+            Text("preferences_general_title")
                 .font(.title2)
                 .fontWeight(.semibold)
 
             VStack(spacing: 16) {
-                preferenceSwitchRow(title: "Play click sound", isOn: $playClickSound)
+                preferenceSwitchRow(titleKey: "preferences_click_sound", isOn: $playClickSound)
 
-                preferenceSwitchRow(title: "Launch at login", isOn: $launchAtLogin)
+                preferenceSwitchRow(titleKey: "preferences_launch_at_login", isOn: $launchAtLogin)
                     .onChange(of: launchAtLogin) { newValue in
                         if #available(macOS 13.0, *) {
                             do {
@@ -47,8 +47,7 @@ struct GeneralPreferencesView: View {
 
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text("Atalho")
-                        .foregroundColor(.primary)
+                    Text("preferences_shortcut_label")
                     Spacer()
                     ShortcutFieldView(
                         isRecording: $isRecordingShortcut,
@@ -56,11 +55,11 @@ struct GeneralPreferencesView: View {
                     )
                 }
 
-                Text("Pressione o atalho desejado para abrir o ɅirClipboard.")
+                Text("preferences_shortcut_description")
                     .font(.caption)
                     .foregroundColor(.secondary)
 
-                Text("⚠️ Alguns atalhos simples como ⌃V podem não funcionar corretamente em certos apps. Recomendamos ⌃⌘V, ⌥⌘C ou combinações com Shift.")
+                Text("preferences_shortcut_warning")
                     .font(.caption2)
                     .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -73,9 +72,9 @@ struct GeneralPreferencesView: View {
     }
 
     @ViewBuilder
-    private func preferenceSwitchRow(title: String, isOn: Binding<Bool>) -> some View {
+    private func preferenceSwitchRow(titleKey: LocalizedStringKey, isOn: Binding<Bool>) -> some View {
         HStack {
-            Text(title)
+            Text(titleKey)
             Spacer()
             Toggle("", isOn: isOn)
                 .toggleStyle(.switch)

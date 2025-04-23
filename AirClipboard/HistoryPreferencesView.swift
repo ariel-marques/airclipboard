@@ -13,13 +13,13 @@ struct HistoryPreferencesView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             // Título da seção
-            Text("Histórico")
+            Text("preferences_history_title")
                 .font(.title2)
                 .fontWeight(.semibold)
 
             // Campo com número e stepper
             HStack(spacing: 12) {
-                Text("Itens no histórico:")
+                Text("preferences_history_limit_label")
                     .fontWeight(.medium)
                     .padding(.trailing, 20)
 
@@ -35,7 +35,7 @@ struct HistoryPreferencesView: View {
             }
 
             // Descrição
-            Text("Defina o número máximo de itens mantidos no histórico. O valor padrão é 50.")
+            Text("preferences_history_description")
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.leading)
@@ -45,8 +45,4 @@ struct HistoryPreferencesView: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-}
-
-#Preview {
-    HistoryPreferencesView()
 }

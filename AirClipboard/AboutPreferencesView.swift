@@ -16,20 +16,20 @@ struct AboutPreferencesView: View {
                     .resizable()
                     .frame(width: 48, height: 48)
                     .cornerRadius(12)
-                
+
                 VStack(alignment: .leading, spacing: 4) {
                     Text("ɅirClipboard")
                         .font(.title2)
                         .fontWeight(.semibold)
 
-                    Text("Versão 1.0.0")
+                    Text("version_label") // Versão 1.0.0
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
             }
 
             // Descrição
-            Text("O ɅirClipboard é um gerenciador de área de transferência elegante e eficiente para macOS, com foco em produtividade e acessibilidade.")
+            Text("about_description")
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -37,9 +37,9 @@ struct AboutPreferencesView: View {
 
             // Links úteis
             VStack(alignment: .leading, spacing: 10) {
-                Link("🌐 Site oficial", destination: URL(string: "https://airclipboard.app")!)
-                Link("🔐 Política de Privacidade", destination: URL(string: "https://airclipboard.app/privacidade")!)
-                Link("💬 Enviar feedback", destination: URL(string: "mailto:suporte@airclipboard.app")!)
+                Link("official_site", destination: URL(string: "https://airclipboard.app")!)
+                Link("privacy_policy", destination: URL(string: "https://airclipboard.app/privacidade")!)
+                Link("send_feedback", destination: URL(string: "mailto:suporte@airclipboard.app")!)
             }
             .font(.subheadline)
 
@@ -47,15 +47,14 @@ struct AboutPreferencesView: View {
 
             // Créditos
             VStack(alignment: .leading, spacing: 4) {
-                Text("Créditos")
+                Text("credits_title")
                     .font(.headline)
-                    .foregroundColor(Color.secondary)
+                    .foregroundColor(.secondary)
 
-                Text("Desenvolvimento, design e direção por Ariel Marques.")
-                Text("Ícones por SF Symbols e QuickLook.")
-                Text("Obrigado à comunidade Swift e aos testes de usuários do app.")
-                Text("Agradecimento especial: Noa Chatfield.")
-
+                Text("credit_development")
+                Text("credit_icons")
+                Text("credit_community")
+                Text("credit_special_thanks")
             }
             .font(.footnote)
             .foregroundColor(.secondary)
@@ -65,8 +64,4 @@ struct AboutPreferencesView: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-}
-
-#Preview {
-    AboutPreferencesView()
 }

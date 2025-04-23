@@ -15,11 +15,11 @@ struct LanguagePreferencesView: View {
 
         var id: String { rawValue }
 
-        var label: String {
+        var label: LocalizedStringKey {
             switch self {
-            case .system: return "Padrão do Sistema"
-            case .english: return "English"
-            case .portuguese: return "Português"
+            case .system: return "language_option_system"
+            case .english: return "language_option_english"
+            case .portuguese: return "language_option_portuguese"
             }
         }
     }
@@ -28,20 +28,23 @@ struct LanguagePreferencesView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
-            Text("Idioma")
+            Text("preferences_language_title")
                 .font(.title2)
                 .fontWeight(.semibold)
 
             VStack(alignment: .leading, spacing: 8) {
-                Picker("Idioma do aplicativo", selection: $selectedLanguage) {
+                Picker("preferences_language_picker_label", selection: $selectedLanguage) {
                     ForEach(AppLanguage.allCases) { language in
                         Text(language.label).tag(language)
                     }
                 }
-                .pickerStyle(.menu) // 👈 estilo pull-down
+                .pickerStyle(.menu)
                 .frame(width: 300)
+                .onChange(of: selectedLanguage) { newValue in
+                    AppEnvironment.shared.updateLanguage(newValue.rawValue)
+                }
 
-                Text("Você pode precisar reiniciar o aplicativo para aplicar a mudança.")
+                Text("preferences_language_note")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -51,8 +54,4 @@ struct LanguagePreferencesView: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-}
-
-#Preview {
-    LanguagePreferencesView()
 }

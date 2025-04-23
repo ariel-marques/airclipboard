@@ -13,13 +13,13 @@ struct AdvancedPreferencesView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             // Título
-            Text("Avançado")
+            Text("preferences_advanced_title")
                 .font(.title2)
                 .fontWeight(.semibold)
 
             // Campo com número e stepper
             HStack(spacing: 12) {
-                Text("Tamanho máximo (MB):")
+                Text("preferences_advanced_max_size_label")
                     .fontWeight(.medium)
                     .padding(.trailing, 20)
 
@@ -37,7 +37,7 @@ struct AdvancedPreferencesView: View {
                     .frame(width: 0.1)
             }
 
-            Text("Defina o tamanho máximo para arquivos capturados pela área de transferência. O padrão é 10 MB.")
+            Text("preferences_advanced_description")
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.leading)
@@ -47,8 +47,4 @@ struct AdvancedPreferencesView: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-}
-
-#Preview {
-    AdvancedPreferencesView()
 }

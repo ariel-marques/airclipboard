@@ -10,12 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var history = ClipboardHistory()
     @State private var clipboardMonitor: ClipboardMonitor?
-    @AppStorage("selectedAppTheme") private var selectedTheme: AppTheme = .system
+
+    @ObservedObject private var environment = AppEnvironment.shared
 
     var body: some View {
         AirClipboardView()
             .environmentObject(history)
-            .preferredColorScheme(mapTheme(selectedTheme))
+            .environment(\.locale, environment.locale) // 🌍 idioma
+            .preferredColorScheme(environment.colorScheme) // 🎨 tema
             .onAppear {
                 if clipboardMonitor == nil {
                     clipboardMonitor = ClipboardMonitor(history: history)
@@ -27,12 +29,9 @@ struct ContentView: View {
 
     private func mapTheme(_ theme: AppTheme) -> ColorScheme? {
         switch theme {
-        case .system:
-            return nil
-        case .light:
-            return .light
-        case .dark:
-            return .dark
+        case .system: return nil
+        case .light: return .light
+        case .dark: return .dark
         }
     }
 }

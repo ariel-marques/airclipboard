@@ -15,7 +15,7 @@ struct SearchBar: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.gray)
 
-            TextField("Buscar...", text: $text)
+            TextField(LocalizedStringKey("search_placeholder"), text: $text)
                 .textFieldStyle(PlainTextFieldStyle())
                 .textFieldStyle(.automatic)
                 .disableAutocorrection(true)

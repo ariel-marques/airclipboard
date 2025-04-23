@@ -72,7 +72,7 @@ struct ClipboardItemView: View {
     private var fileGroupLabel: some View {
         Group {
             if case .fileGroup(let urls) = item.type {
-                Text("\(urls.count) arquivos")
+                Text(LocalizedStringKey("file_group_count \(urls.count)"))
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .padding(.top, 6)
@@ -100,13 +100,13 @@ struct ClipboardItemView: View {
 
     private var menuOverlay: some View {
         Menu {
-            Button("Copiar novamente") {
+            Button(LocalizedStringKey("copy_again")) {
                 PasteManager.shared.copyToPasteboard(item: item)
             }
-            Button(item.isPinned ? "Desafixar" : "Fixar no topo") {
+            Button(LocalizedStringKey(item.isPinned ? "unpin" : "pin_to_top")) {
                 history.togglePin(for: item)
             }
-            Button("Excluir") {
+            Button(LocalizedStringKey("delete")) {
                 history.delete(item: item)
             }
         } label: {
@@ -180,9 +180,21 @@ struct ClipboardItemView: View {
         }
     }
 
+    @AppStorage("selectedLanguage") private var selectedLanguage: String = "system"
+
     private var relativeDateFormatter: RelativeDateTimeFormatter {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .abbreviated
+
+        switch selectedLanguage {
+        case "pt":
+            formatter.locale = Locale(identifier: "pt_BR")
+        case "en":
+            formatter.locale = Locale(identifier: "en_US")
+        default:
+            formatter.locale = Locale.current
+        }
+
         return formatter
     }
 }

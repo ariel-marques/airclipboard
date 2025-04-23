@@ -12,20 +12,20 @@ struct LicensePreferencesView: View {
     @AppStorage("licenseKey") private var licenseKey: String = ""
     @AppStorage("isLicenseVerified") private var isLicenseVerified: Bool = false
 
-    @State private var statusMessage: String = ""
+    @State private var statusMessage: LocalizedStringKey = ""
     @State private var isVerifying = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
-            Text("Licença")
+            Text("preferences_license_title")
                 .font(.title2)
                 .fontWeight(.semibold)
 
             VStack(spacing: 12) {
-                TextField("E-mail", text: $licenseEmail)
+                TextField(LocalizedStringKey("license_email_placeholder"), text: $licenseEmail)
                     .textFieldStyle(.roundedBorder)
 
-                SecureField("Chave de Licença", text: $licenseKey)
+                SecureField(LocalizedStringKey("license_key_placeholder"), text: $licenseKey)
                     .textFieldStyle(.roundedBorder)
 
                 HStack {
@@ -33,7 +33,7 @@ struct LicensePreferencesView: View {
                         if isVerifying {
                             ProgressView().scaleEffect(0.8)
                         } else {
-                            Text("Verificar Licença")
+                            Text("license_verify_button")
                         }
                     }
                     .disabled(licenseEmail.isEmpty || licenseKey.isEmpty)
@@ -51,8 +51,8 @@ struct LicensePreferencesView: View {
         .padding()
         .onAppear {
             statusMessage = isLicenseVerified
-                ? "✅ Licença verificada com sucesso."
-                : "🔒 Licença não verificada."
+                ? "license_verified_message"
+                : "license_not_verified_message"
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -62,10 +62,10 @@ struct LicensePreferencesView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
             if licenseEmail.contains("@") && licenseKey.count >= 8 {
                 isLicenseVerified = true
-                statusMessage = "✅ Licença verificada com sucesso."
+                statusMessage = "license_verified_message"
             } else {
                 isLicenseVerified = false
-                statusMessage = "🚫 Licença inválida. Verifique os dados."
+                statusMessage = "license_invalid_message"
             }
             isVerifying = false
         }

@@ -27,7 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func configureMainWindow() {
         let rootView = ContentView()
-            .preferredColorScheme(AppTheme.current.colorScheme)
+            .environmentObject(AppEnvironment.shared)
+            .environment(\.locale, AppEnvironment.shared.locale)
 
         floatingWindowController = FloatingWindowController(rootView: rootView)
         floatingWindowController?.showWindow(nil)

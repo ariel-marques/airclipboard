@@ -1,0 +1,55 @@
+//
+//  Localizable.strings
+//  AirClipboard
+//
+//  Created by Ariel Marques on 23/04/25.
+//
+
+"search_placeholder" = "Search...";
+"copy_again" = "Copy again";
+"pin_to_top" = "Pin to top";
+"unpin" = "Unpin";
+"delete" = "Delete";
+"file_group_count %lld" = "%lld files";
+section_general = "General";
+section_history = "History";
+section_language = "Language";
+section_advanced = "Advanced";
+section_license = "License";
+section_about = "About";
+preferences_general_title = "General";
+preferences_click_sound = "Click sound";
+preferences_launch_at_login = "Launch at login";
+preferences_shortcut_label = "Shortcut";
+preferences_shortcut_description = "Press the desired shortcut to open ɅirClipboard.";
+preferences_shortcut_warning = "⚠️ Simple shortcuts like ⌃V might not work correctly in certain apps. We recommend ⌃⌘V, ⌥⌘C, or combinations using Shift.";
+preferences_history_title = "History";
+preferences_history_limit_label = "Items in history:";
+preferences_history_description = "Set the maximum number of items to keep in history. The default value is 50.";
+preferences_language_title = "Language";
+preferences_language_picker_label = "App language";
+preferences_language_note = "You may need to restart the app for the change to take effect.";
+
+language_option_system = "System Default";
+language_option_english = "English";
+language_option_portuguese = "Portuguese";
+preferences_advanced_title = "Advanced";
+preferences_advanced_max_size_label = "Maximum size (MB):";
+preferences_advanced_description = "Set the maximum file size for clipboard-captured items. The default is 10 MB.";
+preferences_license_title = "License";
+license_email_placeholder = "Email";
+license_key_placeholder = "License Key";
+license_verify_button = "Verify License";
+license_verified_message = "✅ License verified successfully.";
+license_not_verified_message = "🔒 License not verified.";
+license_invalid_message = "🚫 Invalid license. Please check the details.";
+version_label = "Version 1.0.0";
+about_description = "ɅirClipboard is an elegant and efficient clipboard manager for macOS, focused on productivity and accessibility.";
+official_site = "🌐 Official Website";
+privacy_policy = "🔐 Privacy Policy";
+send_feedback = "💬 Send Feedback";
+credits_title = "Credits";
+credit_development = "Development, design and direction by Ariel Marques.";
+credit_icons = "Icons by SF Symbols and QuickLook.";
+credit_community = "Thanks to the Swift community and user testers.";
+credit_special_thanks = "Special thanks: Noa Chatfield.";
