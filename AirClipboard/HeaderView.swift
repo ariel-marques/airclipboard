@@ -36,3 +36,6 @@ struct HeaderView: View {
         .padding(.bottom, 9.0)
     }
 }
+#Preview {
+    HeaderView()
+}

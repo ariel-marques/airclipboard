@@ -49,7 +49,7 @@ struct AboutPreferencesView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Créditos")
                     .font(.headline)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.secondary)
 
                 Text("Desenvolvimento, design e direção por Ariel Marques.")
                 Text("Ícones por SF Symbols e QuickLook.")

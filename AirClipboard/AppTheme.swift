@@ -8,15 +8,15 @@
 import SwiftUI
 
 enum AppTheme: String, CaseIterable, Identifiable {
-    case system = "System"
-    case light = "Light"
-    case dark = "Dark"
+    case system
+    case light
+    case dark
 
-    var id: String { self.rawValue }
+    var id: String { rawValue }
 
     var label: String {
         switch self {
-        case .system: return "Automático"
+        case .system: return "Padrão do Sistema"
         case .light: return "Claro"
         case .dark: return "Escuro"
         }
@@ -28,9 +28,5 @@ enum AppTheme: String, CaseIterable, Identifiable {
         case .light: return .light
         case .dark: return .dark
         }
-    }
-
-    static var current: AppTheme {
-        AppTheme(rawValue: UserDefaults.standard.string(forKey: "selectedAppTheme") ?? "System") ?? .system
     }
 }
