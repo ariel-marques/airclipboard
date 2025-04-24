@@ -9,9 +9,10 @@ import SwiftUI
 
 struct MenuBarContent: View {
     @ObservedObject private var environment = AppEnvironment.shared
+    @State private var hoveredButton: Int? = nil
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 4) {
             Text("ɅirClipboard")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -20,21 +21,48 @@ struct MenuBarContent: View {
 
             Divider()
 
-            Button {
+            menuButton(id: 0, label: "menu_show", systemImage: "doc.on.doc") {
                 WindowManager.shared.showMainWindow()
-            } label: {
-                Label("menu_show", systemImage: "doc.on.doc")
             }
 
-            Button {
+            menuButton(id: 1, label: "menu_preferences", systemImage: "gearshape") {
                 AppDelegate.shared?.showPreferences()
-            } label: {
-                Label("menu_preferences", systemImage: "gearshape")
             }
 
-            Divider()
+            Divider().padding(.vertical, 2)
+
+            menuButton(id: 2, label: "menu_quit", systemImage: "power") {
+                NSApp.terminate(nil)
+            }
         }
-        .environment(\.locale, environment.locale) // 🗣️ idioma reativo
-        .id(environment.selectedLanguage) // ✅ força reconstrução do conteúdo
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .environment(\.locale, environment.locale)
+        .id(environment.selectedLanguage)
+    }
+
+    // MARK: - Botão com efeito hover
+    @ViewBuilder
+    private func menuButton(id: Int, label: String, systemImage: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack {
+                Image(systemName: systemImage)
+                Text(LocalizedStringKey(label))
+                Spacer()
+            }
+            .padding(.vertical, 4)
+            .padding(.horizontal, 6)
+            .background(
+                hoveredButton == id
+                    ? Color.gray.opacity(0.3)
+                    : Color.clear
+            )
+            .cornerRadius(4)
+        }
+        .buttonStyle(.plain)
+        .focusable(false)
+        .onHover { hovering in
+            hoveredButton = hovering ? id : nil
+        }
     }
 }

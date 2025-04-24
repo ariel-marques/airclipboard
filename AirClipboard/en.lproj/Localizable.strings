@@ -55,3 +55,4 @@ credit_community = "Thanks to the Swift community and user testers.";
 credit_special_thanks = "Special thanks: Noa Chatfield.";
 "menu_show" = "Show ɅirClipboard";
 "menu_preferences" = "Preferences...";
+"menu_quit" = "Quit";
