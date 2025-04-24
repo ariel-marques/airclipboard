@@ -56,3 +56,6 @@ credit_special_thanks = "Agradecimento especial: Noa Chatfield.";
 "menu_show" = "Mostrar ɅirClipboard";
 "menu_preferences" = "Preferências...";
 "menu_quit" = "Sair";
+license_toggle_placeholder = "Já tenho uma licença";
+license_placeholder_message = "🔐 Insira sua licença para desbloquear todos os recursos premium do ɅirClipboard.";
+"license_already_have" = "Já tenho uma licença";

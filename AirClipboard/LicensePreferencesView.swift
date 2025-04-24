@@ -12,6 +12,7 @@ struct LicensePreferencesView: View {
     @AppStorage("licenseKey") private var licenseKey: String = ""
     @AppStorage("isLicenseVerified") private var isLicenseVerified: Bool = false
 
+    @State private var wantsToEnterLicense = false
     @State private var statusMessage: LocalizedStringKey = ""
     @State private var isVerifying = false
 
@@ -21,29 +22,36 @@ struct LicensePreferencesView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            VStack(spacing: 12) {
-                TextField(LocalizedStringKey("license_email_placeholder"), text: $licenseEmail)
-                    .textFieldStyle(.roundedBorder)
+            Toggle("license_already_have", isOn: $wantsToEnterLicense)
+                .toggleStyle(.checkbox)
 
-                SecureField(LocalizedStringKey("license_key_placeholder"), text: $licenseKey)
-                    .textFieldStyle(.roundedBorder)
+            if wantsToEnterLicense {
+                VStack(spacing: 12) {
+                    TextField(LocalizedStringKey("license_email_placeholder"), text: $licenseEmail)
+                        .textFieldStyle(.roundedBorder)
 
-                HStack {
-                    Button(action: verifyLicense) {
-                        if isVerifying {
-                            ProgressView().scaleEffect(0.8)
-                        } else {
-                            Text("license_verify_button")
+                    SecureField(LocalizedStringKey("license_key_placeholder"), text: $licenseKey)
+                        .textFieldStyle(.roundedBorder)
+
+                    HStack {
+                        Button(action: verifyLicense) {
+                            if isVerifying {
+                                ProgressView().scaleEffect(0.8)
+                            } else {
+                                Text("license_verify_button")
+                            }
                         }
+                        .disabled(licenseEmail.isEmpty || licenseKey.isEmpty)
+
+                        Spacer()
+
+                        Text(statusMessage)
+                            .font(.caption)
+                            .foregroundColor(isLicenseVerified ? .green : .secondary)
                     }
-                    .disabled(licenseEmail.isEmpty || licenseKey.isEmpty)
-
-                    Spacer()
-
-                    Text(statusMessage)
-                        .font(.caption)
-                        .foregroundColor(isLicenseVerified ? .green : .secondary)
                 }
+                .transition(.opacity.combined(with: .move(edge: .top)))
+                .animation(.easeInOut(duration: 0.25), value: wantsToEnterLicense)
             }
 
             Spacer()
