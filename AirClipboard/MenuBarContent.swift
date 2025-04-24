@@ -21,17 +21,26 @@ struct MenuBarContent: View {
 
             Divider()
 
-            menuButton(id: 0, label: "menu_show", systemImage: "doc.on.doc") {
+            menuButton(id: 0, label: "menu_show", image: {
+                Image(systemName: "v.square")
+                    .rotationEffect(.degrees(180))
+                    .symbolRenderingMode(.monochrome)
+                    .font(.system(size: 14, weight: .medium))
+            }) {
                 WindowManager.shared.showMainWindow()
             }
 
-            menuButton(id: 1, label: "menu_preferences", systemImage: "gearshape") {
+            menuButton(id: 1, label: "menu_preferences", image: {
+                Image(systemName: "gearshape")
+            }) {
                 AppDelegate.shared?.showPreferences()
             }
 
             Divider().padding(.vertical, 2)
 
-            menuButton(id: 2, label: "menu_quit", systemImage: "power") {
+            menuButton(id: 2, label: "menu_quit", image: {
+                Image(systemName: "power")
+            }) {
                 NSApp.terminate(nil)
             }
         }
@@ -41,12 +50,12 @@ struct MenuBarContent: View {
         .id(environment.selectedLanguage)
     }
 
-    // MARK: - Botão com efeito hover
+    // MARK: - Botão com efeito hover e imagem customizada
     @ViewBuilder
-    private func menuButton(id: Int, label: String, systemImage: String, action: @escaping () -> Void) -> some View {
+    private func menuButton(id: Int, label: String, image: () -> some View, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack {
-                Image(systemName: systemImage)
+                image()
                 Text(LocalizedStringKey(label))
                 Spacer()
             }
