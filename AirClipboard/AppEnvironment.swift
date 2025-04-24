@@ -11,7 +11,7 @@ class AppEnvironment: ObservableObject {
     static let shared = AppEnvironment()
 
     // MARK: - Idioma
-    @Published var selectedLanguage: String = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "system"
+    @Published var selectedLanguage: String
 
     var locale: Locale {
         switch selectedLanguage {
@@ -43,5 +43,18 @@ class AppEnvironment: ObservableObject {
         objectWillChange.send()
     }
 
-    private init() {}
+    // MARK: - Init com lógica de idioma inteligente
+    private init() {
+        let saved = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "system"
+        if saved == "system" {
+            let region = Locale.current.identifier
+            if region.contains("pt") {
+                selectedLanguage = "pt"
+            } else {
+                selectedLanguage = "en"
+            }
+        } else {
+            selectedLanguage = saved
+        }
+    }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 enum PreferencesSection: String, CaseIterable, Identifiable {
     case general, history, language, advanced, license, about
 
-    var id: String { rawValue }
+    var id: String { self.rawValue }
 
     var icon: String {
         switch self {
@@ -23,20 +23,21 @@ enum PreferencesSection: String, CaseIterable, Identifiable {
         }
     }
 
-    var localizedTitle: String {
+    var localizedTitle: LocalizedStringKey {
         switch self {
-        case .general: return String(localized: "section_general")
-        case .history: return String(localized: "section_history")
-        case .language: return String(localized: "section_language")
-        case .advanced: return String(localized: "section_advanced")
-        case .license: return String(localized: "section_license")
-        case .about: return String(localized: "section_about")
+        case .general: return "section_general"
+        case .history: return "section_history"
+        case .language: return "section_language"
+        case .advanced: return "section_advanced"
+        case .license: return "section_license"
+        case .about: return "section_about"
         }
     }
 }
 
 struct PreferencesView: View {
     @State private var selectedSection: PreferencesSection = .general
+    @ObservedObject private var environment = AppEnvironment.shared
 
     var body: some View {
         HStack(spacing: 0) {
@@ -47,7 +48,7 @@ struct PreferencesView: View {
                         .padding(.vertical, 6)
                         .tag(section)
                 }
-                .listStyle(.sidebar) // ✅ Nova API mais semântica
+                .listStyle(.sidebar)
             }
             .frame(minWidth: 180, idealWidth: 200, maxWidth: 220)
             .background(Color(NSColor.controlBackgroundColor))
@@ -61,6 +62,7 @@ struct PreferencesView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(24)
         }
+        .environment(\.locale, environment.locale) // 🌍 Aplica idioma dinamicamente
         .frame(minWidth: 620, minHeight: 420)
     }
 

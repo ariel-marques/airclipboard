@@ -53,3 +53,5 @@ credit_development = "Development, design and direction by Ariel Marques.";
 credit_icons = "Icons by SF Symbols and QuickLook.";
 credit_community = "Thanks to the Swift community and user testers.";
 credit_special_thanks = "Special thanks: Noa Chatfield.";
+"menu_show" = "Show ɅirClipboard";
+"menu_preferences" = "Preferences...";

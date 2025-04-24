@@ -53,3 +53,5 @@ credit_development = "Desenvolvimento, design e direção por Ariel Marques.";
 credit_icons = "Ícones por SF Symbols e QuickLook.";
 credit_community = "Obrigado à comunidade Swift e aos testes de usuários do app.";
 credit_special_thanks = "Agradecimento especial: Noa Chatfield.";
+"menu_show" = "Mostrar ɅirClipboard";
+"menu_preferences" = "Preferências...";
