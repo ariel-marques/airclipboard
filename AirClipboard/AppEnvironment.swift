@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+enum LicenseStatus: String {
+    case free
+    case trial
+    case pro_lifetime
+    case pro_monthly
+}
+
 class AppEnvironment: ObservableObject {
     static let shared = AppEnvironment()
 
@@ -24,7 +31,7 @@ class AppEnvironment: ObservableObject {
     func updateLanguage(_ newValue: String) {
         selectedLanguage = newValue
         UserDefaults.standard.set(newValue, forKey: "selectedLanguage")
-        objectWillChange.send() // ⚠️ Atualiza os observadores
+        objectWillChange.send()
     }
 
     // MARK: - Tema
@@ -40,6 +47,18 @@ class AppEnvironment: ObservableObject {
     func updateTheme(_ newValue: AppTheme) {
         selectedTheme = newValue
         UserDefaults.standard.set(newValue.rawValue, forKey: "selectedAppTheme")
+        objectWillChange.send()
+    }
+
+    // MARK: - Licença
+    @Published var licenseStatus: LicenseStatus = {
+        let rawValue = UserDefaults.standard.string(forKey: "licenseStatus") ?? "free"
+        return LicenseStatus(rawValue: rawValue) ?? .free
+    }()
+
+    func updateLicenseStatus(_ newValue: LicenseStatus) {
+        licenseStatus = newValue
+        UserDefaults.standard.set(newValue.rawValue, forKey: "licenseStatus")
         objectWillChange.send()
     }
 

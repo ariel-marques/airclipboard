@@ -35,11 +35,20 @@ struct AirClipboardView: View {
             HeaderView()
             SearchBar(text: $searchText)
 
+            // 🔔 Aviso visual para modo gratuito com limite atingido
+            if AppEnvironment.shared.licenseStatus == .free && history.history.count >= 3 {
+                Text("Limite de 3 itens atingido no modo gratuito.")
+                    .font(.caption)
+                    .foregroundColor(.red)
+                    .padding(.top, 4)
+                    .padding(.bottom, 6)
+            }
+
             ScrollViewReader { scrollProxy in
                 ScrollView {
                     LazyVStack(spacing: 0) {
-                        Spacer(minLength: 8) // ✅ respiro no topo
-                        
+                        Spacer(minLength: 8)
+
                         ForEach(filteredItems) { item in
                             ClipboardItemView(item: item)
                                 .id(item.id)
@@ -52,8 +61,6 @@ struct AirClipboardView: View {
                 }
                 .onChange(of: history.lastInsertedID) { id in
                     guard let id = id else { return }
-
-                    // Garantir que o scroll ocorra após ordenação completa
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         withAnimation(.easeInOut) {
                             scrollProxy.scrollTo(id, anchor: .top)
