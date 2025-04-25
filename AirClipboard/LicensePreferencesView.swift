@@ -18,13 +18,42 @@ struct LicensePreferencesView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
+            // Título
             Text("preferences_license_title")
                 .font(.title2)
                 .fontWeight(.semibold)
 
+            // Status atual
+            HStack {
+                Image(systemName: isLicenseVerified ? "checkmark.seal.fill" : "lock.fill")
+                    .foregroundColor(isLicenseVerified ? .green : .gray)
+
+                Text(isLicenseVerified ? "license_status_pro" : "license_status_free")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+
+            // Botão de upgrade
+            Button(action: {
+                // Abrirá página externa ou futuro modal
+                if let url = URL(string: "https://airclipboard.app/pro") {
+                    NSWorkspace.shared.open(url)
+                }
+            }) {
+                Text("license_upgrade_button")
+                    .fontWeight(.medium)
+                    .padding(.vertical, 6)
+                    .padding(.horizontal, 14)
+                    .background(Color.accentColor.opacity(0.15))
+                    .cornerRadius(8)
+            }
+            .buttonStyle(.plain)
+
+            // Checkbox para ativar chave manualmente
             Toggle("license_already_have", isOn: $wantsToEnterLicense)
                 .toggleStyle(.checkbox)
 
+            // Campos de ativação
             if wantsToEnterLicense {
                 VStack(spacing: 12) {
                     TextField(LocalizedStringKey("license_email_placeholder"), text: $licenseEmail)
@@ -36,7 +65,7 @@ struct LicensePreferencesView: View {
                     HStack {
                         Button(action: verifyLicense) {
                             if isVerifying {
-                                ProgressView().scaleEffect(0.8)
+                                ProgressView().scaleEffect(0.3)
                             } else {
                                 Text("license_verify_button")
                             }

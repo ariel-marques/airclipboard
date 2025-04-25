@@ -62,3 +62,6 @@ license_placeholder_message = "🔐 Enter your license to unlock all premium fea
 limit_reached_free_mode = "Limit of 3 items reached in free mode.";
 upgrade_button_label = "Unlock limit";
 "upgrade_tooltip" = "Release Unlimited Access";
+license_status_free = "You are using the free version.";
+license_status_pro = "Pro version activated.";
+license_upgrade_button = "Get Pro version";

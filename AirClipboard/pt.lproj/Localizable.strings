@@ -62,3 +62,6 @@ license_placeholder_message = "🔐 Insira sua licença para desbloquear todos o
 limit_reached_free_mode = "Limite de 3 itens atingido no modo gratuito.";
 upgrade_button_label = "Liberar limite";
 "upgrade_tooltip" = "Liberar acesso ilimitado";
+license_status_free = "Você está usando o modo gratuito.";
+license_status_pro = "Versão Pro ativada.";
+license_upgrade_button = "Obter versão Pro";
