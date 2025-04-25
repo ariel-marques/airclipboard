@@ -21,21 +21,6 @@ class ClipboardHistory: ObservableObject {
     }
 
     func addItem(_ item: ClipboardItem) {
-        // ⚠️ Limitação no modo gratuito: apenas 3 itens de TEXTO
-        if AppEnvironment.shared.licenseStatus == .free {
-            if case .text = item.type {
-                let existingTextItems = history.filter {
-                    if case .text = $0.type { return true }
-                    return false
-                }
-
-                if existingTextItems.count >= 3 {
-                    print("🚫 Limite de 3 itens de texto atingido no modo gratuito.")
-                    return
-                }
-            }
-        }
-
         // 🔍 Remove duplicatas antes de adicionar (preservando pins)
         history.removeAll(where: { $0.type == item.type && !$0.isPinned })
 
@@ -50,7 +35,6 @@ class ClipboardHistory: ObservableObject {
         let trimmed = Array(unpinned.prefix(historyLimit))
 
         self.history = pinned + trimmed
-
         storage.saveHistory(history)
     }
 

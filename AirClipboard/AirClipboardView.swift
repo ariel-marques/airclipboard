@@ -23,7 +23,7 @@ struct AirClipboardView: View {
             case .text(let value):
                 return value.lowercased().contains(trimmed)
             default:
-                return true // Continua exibindo arquivos e imagens mesmo que a busca esteja ativa
+                return true
             }
         }
     }
@@ -37,36 +37,67 @@ struct AirClipboardView: View {
 
             // 🔔 Aviso visual para modo gratuito com limite atingido
             if AppEnvironment.shared.licenseStatus == .free && history.history.count >= 3 {
-                Text("Limite de 3 itens atingido no modo gratuito.")
-                    .font(.caption)
-                    .foregroundColor(.red)
-                    .padding(.top, 4)
-                    .padding(.bottom, 6)
+                HStack(alignment: .center, spacing: 8) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundColor(.yellow)
+
+                    Text("limit_reached_free_mode")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+
+                    Spacer()
+
+                    Button(action: {
+                        AppDelegate.shared?.showPreferences()
+                    }) {
+                        Text("upgrade_button_label")
+                            .font(.footnote)
+                            .fontWeight(.medium)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color.accentColor.opacity(0.15))
+                            .foregroundColor(.accentColor)
+                            .cornerRadius(6)
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.horizontal, 12)
+                .padding(.top, 6)
+                .padding(.bottom, 6)
             }
 
-            ScrollViewReader { scrollProxy in
-                ScrollView {
-                    LazyVStack(spacing: 0) {
-                        Spacer(minLength: 8)
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    Spacer(minLength: 8)
 
-                        ForEach(filteredItems) { item in
+                    ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
+                        let isLocked = AppEnvironment.shared.licenseStatus == .free && index >= 3
+
+                        ZStack {
                             ClipboardItemView(item: item)
-                                .id(item.id)
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 4)
+                                .blur(radius: isLocked ? 4 : 0)
+                                .overlay(
+                                    Group {
+                                        if isLocked {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .fill(Color.black.opacity(0.25))
+                                                .overlay(
+                                                    Image(systemName: "lock.fill")
+                                                        .font(.title2)
+                                                        .foregroundColor(.white.opacity(0.85))
+                                                )
+                                        }
+                                    }
+                                )
+                                .disabled(isLocked)
+                                .help(isLocked ? LocalizedStringKey("upgrade_tooltip") : "")
                         }
-                    }
-                    .padding(.top, 8)
-                    .padding(.bottom, 12)
-                }
-                .onChange(of: history.lastInsertedID) { id in
-                    guard let id = id else { return }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        withAnimation(.easeInOut) {
-                            scrollProxy.scrollTo(id, anchor: .top)
-                        }
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
                     }
                 }
+                .padding(.top, 8)
+                .padding(.bottom, 12)
             }
         }
         .frame(width: 400, height: 500)
