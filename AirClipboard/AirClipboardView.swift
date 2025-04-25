@@ -48,7 +48,7 @@ struct AirClipboardView: View {
                     Spacer()
 
                     Button(action: {
-                        AppDelegate.shared?.showPreferences()
+                        AppDelegate.shared?.showPreferences(selecting: .license)
                     }) {
                         Text("upgrade_button_label")
                             .font(.footnote)

@@ -51,6 +51,11 @@ struct PreferencesView: View {
                 .listStyle(.sidebar)
             }
             .frame(minWidth: 180, idealWidth: 200, maxWidth: 220)
+            .onReceive(NotificationCenter.default.publisher(for: .selectPreferencesSection)) { notification in
+                if let section = notification.object as? PreferencesSection {
+                    selectedSection = section
+                }
+            }
             .background(Color(NSColor.controlBackgroundColor))
 
             Divider()

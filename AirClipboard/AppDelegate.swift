@@ -49,6 +49,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
 
+    func showPreferences(selecting section: PreferencesSection) {
+        if preferencesWindowController == nil {
+            preferencesWindowController = PreferencesWindowController()
+        }
+
+        preferencesWindowController?.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            NotificationCenter.default.post(name: .selectPreferencesSection, object: section)
+        }
+    }
+ 
     private func applyLaunchAtLogin() {
         if #available(macOS 13.0, *) {
             do {
@@ -64,3 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 }
+
+   extension Notification.Name {
+       static let selectPreferencesSection = Notification.Name("selectPreferencesSection")
+   }
