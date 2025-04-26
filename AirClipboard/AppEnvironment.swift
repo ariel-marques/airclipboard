@@ -51,10 +51,7 @@ class AppEnvironment: ObservableObject {
     }
 
     // MARK: - Licença
-    @Published var licenseStatus: LicenseStatus = {
-        let rawValue = UserDefaults.standard.string(forKey: "licenseStatus") ?? "free"
-        return LicenseStatus(rawValue: rawValue) ?? .free
-    }()
+    @Published var licenseStatus: LicenseStatus = .pro_lifetime
 
     func updateLicenseStatus(_ newValue: LicenseStatus) {
         licenseStatus = newValue
@@ -106,7 +103,6 @@ class AppEnvironment: ObservableObject {
             selectedLanguage = saved
         }
         
-        self.licenseStatus = .trial
-        self.startTrialIfNeeded()
+        // 🚫 Não força mais licença no init!
     }
 }

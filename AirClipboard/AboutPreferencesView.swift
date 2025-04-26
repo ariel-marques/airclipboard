@@ -37,9 +37,9 @@ struct AboutPreferencesView: View {
 
             // Links úteis
             VStack(alignment: .leading, spacing: 10) {
-                Link("official_site", destination: URL(string: "https://airclipboard.app")!)
-                Link("privacy_policy", destination: URL(string: "https://airclipboard.app/privacidade")!)
-                Link("send_feedback", destination: URL(string: "mailto:suporte@airclipboard.app")!)
+                Link("official_site", destination: URL(string: "https://ariel.works")!)
+                Link("privacy_policy", destination: URL(string: "https://ariel.works/airclipboard/privacy")!)
+                Link("send_feedback", destination: URL(string: "mailto:airclipboardapp@gmail.com")!)
             }
             .font(.subheadline)
 
