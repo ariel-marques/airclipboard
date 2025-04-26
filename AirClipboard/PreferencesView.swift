@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum PreferencesSection: String, CaseIterable, Identifiable {
-    case general, history, language, advanced, license, about
+    case general, history, language, /* advanced, */ license, about
 
     var id: String { self.rawValue }
 
@@ -17,7 +17,7 @@ enum PreferencesSection: String, CaseIterable, Identifiable {
         case .general: return "gearshape"
         case .history: return "clock.arrow.circlepath"
         case .language: return "globe"
-        case .advanced: return "slider.horizontal.3"
+        // case .advanced: return "slider.horizontal.3"
         case .license: return "key"
         case .about: return "laptopcomputer"
         }
@@ -28,7 +28,7 @@ enum PreferencesSection: String, CaseIterable, Identifiable {
         case .general: return "section_general"
         case .history: return "section_history"
         case .language: return "section_language"
-        case .advanced: return "section_advanced"
+        // case .advanced: return "section_advanced"
         case .license: return "section_license"
         case .about: return "section_about"
         }
@@ -80,8 +80,8 @@ struct PreferencesView: View {
             HistoryPreferencesView()
         case .language:
             LanguagePreferencesView()
-        case .advanced:
-            AdvancedPreferencesView()
+        // case .advanced:
+        //     AdvancedPreferencesView()
         case .license:
             LicensePreferencesView()
         case .about:

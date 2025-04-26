@@ -17,7 +17,8 @@ struct AdvancedPreferencesView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            // Campo com número e stepper
+            // ⏸️ Opção de tamanho máximo ocultada temporariamente
+            /*
             HStack(spacing: 12) {
                 Text("preferences_advanced_max_size_label")
                     .fontWeight(.medium)
@@ -41,6 +42,7 @@ struct AdvancedPreferencesView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.leading)
+            */
 
             Spacer()
         }
