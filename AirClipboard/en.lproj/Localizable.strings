@@ -71,3 +71,4 @@ license_status_free = "You are using the free mode.";
 license_status_pro = "Pro version activated.";
 license_status_pro_lifetime = "Lifetime license activated.";
 license_upgrade_button = "Get Pro Version";
+"trial_expired_message" = "Trial period ended. Get Pro to continue.";

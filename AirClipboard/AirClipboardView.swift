@@ -38,13 +38,13 @@ struct AirClipboardView: View {
             // 🔔 Contador de trial (se aplicável)
             TrialStatusView()
 
-            // 🔔 Aviso visual para modo gratuito com limite atingido
-            if AppEnvironment.shared.licenseStatus == .free && history.history.count >= 3 {
+            // 🔒 Aviso visual se o trial expirou
+            if AppEnvironment.shared.licenseStatus == .trial && !AppEnvironment.shared.isTrialActive {
                 HStack(alignment: .center, spacing: 8) {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundColor(.yellow)
+                    Image(systemName: "hourglass.bottomhalf.fill")
+                        .foregroundColor(.orange)
 
-                    Text("limit_reached_free_mode")
+                    Text("trial_expired_message")
                         .font(.footnote)
                         .foregroundColor(.secondary)
 
@@ -65,8 +65,7 @@ struct AirClipboardView: View {
                     .buttonStyle(.plain)
                 }
                 .padding(.horizontal, 12)
-                .padding(.top, 6)
-                .padding(.bottom, 6)
+                .padding(.vertical, 6)
             }
 
             ScrollView {
