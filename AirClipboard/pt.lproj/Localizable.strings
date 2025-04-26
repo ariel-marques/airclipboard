@@ -67,3 +67,7 @@ license_status_pro = "Versão Pro ativada.";
 license_upgrade_button = "Obter versão Pro";
 "trial_days_left %lld" = "Período de teste: %lld dia(s) restante(s)";
 "trial_expired_message" = "Seu período de teste terminou.";
+license_status_free = "Você está usando o modo gratuito.";
+license_status_pro = "Versão Pro ativada.";
+license_status_pro_lifetime = "Licença vitalícia ativada.";
+license_upgrade_button = "Obter versão Pro";

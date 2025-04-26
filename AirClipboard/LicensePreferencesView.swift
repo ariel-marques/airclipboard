@@ -90,6 +90,9 @@ struct LicensePreferencesView: View {
             statusMessage = isLicenseVerified
                 ? "license_verified_message"
                 : "license_not_verified_message"
+            if isLicenseVerified && AppEnvironment.shared.licenseStatus == .free {
+                    AppEnvironment.shared.updateLicenseStatus(.pro_lifetime)
+                }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -100,9 +103,11 @@ struct LicensePreferencesView: View {
             if licenseEmail.contains("@") && licenseKey.count >= 8 {
                 isLicenseVerified = true
                 statusMessage = "license_verified_message"
+                AppEnvironment.shared.updateLicenseStatus(.pro_lifetime)
             } else {
                 isLicenseVerified = false
                 statusMessage = "license_invalid_message"
+                AppEnvironment.shared.updateLicenseStatus(.free)
             }
             isVerifying = false
         }
