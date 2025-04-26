@@ -19,13 +19,17 @@ struct AirClipboardView: View {
         }
 
         return history.history.filter { item in
-            switch item.type {
-            case .text(let value):
-                return value.lowercased().contains(trimmed)
-            default:
-                return true
+                switch item.type {
+                case .text(let value):
+                    return value.lowercased().contains(trimmed)
+                case .file(let url):
+                    return url.lastPathComponent.lowercased().contains(trimmed)
+                case .fileGroup(let urls):
+                    return urls.contains { $0.lastPathComponent.lowercased().contains(trimmed) }
+                case .image:
+                    return false
+                }
             }
-        }
     }
 
     var body: some View {
