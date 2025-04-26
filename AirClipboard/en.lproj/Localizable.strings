@@ -65,3 +65,5 @@ upgrade_button_label = "Unlock limit";
 license_status_free = "You are using the free version.";
 license_status_pro = "Pro version activated.";
 license_upgrade_button = "Get Pro version";
+"trial_days_left %lld" = "Trial: %lld day(s) left";
+"trial_expired_message" = "Your trial has expired.";

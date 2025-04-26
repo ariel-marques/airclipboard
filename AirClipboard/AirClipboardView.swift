@@ -34,6 +34,9 @@ struct AirClipboardView: View {
         return VStack(spacing: 0) {
             HeaderView()
             SearchBar(text: $searchText)
+            
+            // 🔔 Contador de trial (se aplicável)
+            TrialStatusView()
 
             // 🔔 Aviso visual para modo gratuito com limite atingido
             if AppEnvironment.shared.licenseStatus == .free && history.history.count >= 3 {

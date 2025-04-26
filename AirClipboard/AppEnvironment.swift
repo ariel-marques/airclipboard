@@ -61,7 +61,37 @@ class AppEnvironment: ObservableObject {
         UserDefaults.standard.set(newValue.rawValue, forKey: "licenseStatus")
         objectWillChange.send()
     }
+    
+    // MARK: - Trial
+       @AppStorage("trialStartDate") private var trialStartDateString: String = ""
+       let trialDurationDays: Int = 7
 
+       var isTrialActive: Bool {
+           if licenseStatus == .trial {
+               return trialDaysLeft > 0
+           }
+           return false
+       }
+
+       var trialDaysLeft: Int {
+           guard let startDate = trialStartDate else { return 0 }
+           let elapsed = Calendar.current.dateComponents([.day], from: startDate, to: Date()).day ?? 0
+           let remaining = trialDurationDays - elapsed
+           return max(remaining, 0)
+       }
+
+       private var trialStartDate: Date? {
+           guard !trialStartDateString.isEmpty else { return nil }
+           return ISO8601DateFormatter().date(from: trialStartDateString)
+       }
+
+       func startTrialIfNeeded() {
+           if trialStartDate == nil {
+               trialStartDateString = ISO8601DateFormatter().string(from: Date())
+               print("🆕 Trial iniciado em: \(trialStartDateString)")
+           }
+       }
+    
     // MARK: - Init com lógica de idioma inteligente
     private init() {
         let saved = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "system"
@@ -75,5 +105,8 @@ class AppEnvironment: ObservableObject {
         } else {
             selectedLanguage = saved
         }
+        
+        self.licenseStatus = .trial
+        self.startTrialIfNeeded()
     }
 }

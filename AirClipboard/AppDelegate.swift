@@ -20,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         print("🚀 AirClipboardApp iniciado com AppDelegate ✅")
         AppDelegate.shared = self
+        AppEnvironment.shared.startTrialIfNeeded()
         applyLaunchAtLogin()
         configureMainWindow()
         registerGlobalHotkey()
