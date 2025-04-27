@@ -19,17 +19,17 @@ struct AirClipboardView: View {
         }
 
         return history.history.filter { item in
-                switch item.type {
-                case .text(let value):
-                    return value.lowercased().contains(trimmed)
-                case .file(let url):
-                    return url.lastPathComponent.lowercased().contains(trimmed)
-                case .fileGroup(let urls):
-                    return urls.contains { $0.lastPathComponent.lowercased().contains(trimmed) }
-                case .image:
-                    return false
-                }
+            switch item.type {
+            case .text(let value):
+                return value.lowercased().contains(trimmed)
+            case .file(let url):
+                return url.lastPathComponent.lowercased().contains(trimmed)
+            case .fileGroup(let urls):
+                return urls.contains { $0.lastPathComponent.lowercased().contains(trimmed) }
+            case .image:
+                return false
             }
+        }
     }
 
     var body: some View {
@@ -72,38 +72,52 @@ struct AirClipboardView: View {
                 .padding(.vertical, 6)
             }
 
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    Spacer(minLength: 8)
+            ScrollViewReader { scrollProxy in
+                ScrollView {
+                    LazyVStack(spacing: 0) {
+                        Spacer(minLength: 8)
 
-                    ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
-                        let isLocked = AppEnvironment.shared.licenseStatus == .free && index >= 3
+                        ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
+                            let isLocked = AppEnvironment.shared.licenseStatus == .free && index >= 3
 
-                        ZStack {
-                            ClipboardItemView(item: item)
-                                .blur(radius: isLocked ? 4 : 0)
-                                .overlay(
-                                    Group {
-                                        if isLocked {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .fill(Color.black.opacity(0.25))
-                                                .overlay(
-                                                    Image(systemName: "lock.fill")
-                                                        .font(.title2)
-                                                        .foregroundColor(.white.opacity(0.85))
-                                                )
+                            // Novo: determinar o último item não fixado
+                            let firstUnpinnedID = filteredItems.first(where: { !$0.isPinned })?.id
+                            let isMostRecent = item.id == firstUnpinnedID
+
+                            ZStack {
+                                ClipboardItemView(item: item, isMostRecent: isMostRecent)
+                                    .blur(radius: isLocked ? 4 : 0)
+                                    .overlay(
+                                        Group {
+                                            if isLocked {
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(Color.black.opacity(0.25))
+                                                    .overlay(
+                                                        Image(systemName: "lock.fill")
+                                                            .font(.title2)
+                                                            .foregroundColor(.white.opacity(0.85))
+                                                    )
+                                            }
                                         }
-                                    }
-                                )
-                                .disabled(isLocked)
-                                .help(isLocked ? LocalizedStringKey("upgrade_tooltip") : "")
+                                    )
+                                    .disabled(isLocked)
+                                    .help(isLocked ? LocalizedStringKey("upgrade_tooltip") : "")
+                            }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
                         }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
+                    }
+                    .padding(.top, 8)
+                    .padding(.bottom, 12)
+                }
+                .onChange(of: history.lastInsertedID) { id in
+                    guard let id = id else { return } // ⚡️ Se nil, não scrolla
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        withAnimation(.easeInOut) {
+                            scrollProxy.scrollTo(id, anchor: .top)
+                        }
                     }
                 }
-                .padding(.top, 8)
-                .padding(.bottom, 12)
             }
         }
         .frame(width: 400, height: 500)

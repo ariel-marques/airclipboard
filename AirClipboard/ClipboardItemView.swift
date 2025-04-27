@@ -13,6 +13,7 @@ struct ClipboardItemView: View {
     @AppStorage("playClickSound") private var playClickSound: Bool = true
     @EnvironmentObject var history: ClipboardHistory
     var item: ClipboardItem
+    var isMostRecent: Bool
     @State private var isHovering = false
 
     var body: some View {
@@ -100,20 +101,33 @@ struct ClipboardItemView: View {
 
     private var menuOverlay: some View {
         Menu {
-            Button(LocalizedStringKey("copy_again")) {
+            
+            Button {
                 PasteManager.shared.copyToPasteboard(item: item)
+            } label: {
+                Label("copy_again", systemImage: "doc.on.doc")
             }
-            Button(LocalizedStringKey(item.isPinned ? "unpin" : "pin_to_top")) {
+
+            // Fixar ou Desafixar
+            Button {
                 history.togglePin(for: item)
+            } label: {
+                Label(item.isPinned ? "unpin" : "pin_to_top", systemImage: item.isPinned ? "pin.slash.fill" : "pin.fill")
             }
-            Button(LocalizedStringKey("delete")) {
-                history.delete(item: item)
+            Divider()
+            // Apagar (aparece em vermelho agora)
+            if !isMostRecent {
+                Button(role: .destructive) {
+                    history.delete(item: item)
+                } label: {
+                    Label("delete", systemImage: "trash.fill")
+                }
             }
         } label: {
             Image(systemName: "ellipsis")
-                .symbolRenderingMode(.multicolor)
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.primary, .secondary)
                 .font(.title2)
-                .foregroundColor(.primary)
                 .padding(8)
         }
         .frame(width: 25)

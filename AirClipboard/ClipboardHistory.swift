@@ -52,6 +52,9 @@ class ClipboardHistory: ObservableObject {
     }
 
     func delete(item: ClipboardItem) {
+        if item.id == lastInsertedID {
+            lastInsertedID = nil
+        }
         history.removeAll { $0.id == item.id }
         storage.saveHistory(history)
     }

@@ -9,7 +9,7 @@
 "copy_again" = "Copiar novamente";
 "pin_to_top" = "Fixar no topo";
 "unpin" = "Desafixar";
-"delete" = "Excluir";
+"delete" = "Apagar";
 "file_group_count %lld" = "%lld arquivos";
 section_general = "Geral";
 section_history = "Histórico";
