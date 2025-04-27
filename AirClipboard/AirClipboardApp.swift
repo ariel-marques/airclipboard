@@ -13,12 +13,14 @@ struct AirClipboardApp: App {
     @ObservedObject private var environment = AppEnvironment.shared
 
     var body: some Scene {
-        MenuBarExtra("", image: "MenuBarIcon") {
-            // 🔄 Avisa internamente que deve reconstruir ao mudar de idioma
+        MenuBarExtra {
             MenuBarContent()
-                .id(environment.selectedLanguage) // 💡 ID aqui, onde é View
+                .id(environment.selectedLanguage)
+        } label: {
+            Image("MenuBarIcon")
+                .renderingMode(.template)
         }
         .menuBarExtraStyle(.window)
-        .environment(\.locale, environment.locale) // 🌍 aplica idioma
+        .environment(\.locale, environment.locale)
     }
 }
