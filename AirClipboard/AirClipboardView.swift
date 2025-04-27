@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AirClipboardView: View {
+    @State private var animateItemsOnAppear = false
     @EnvironmentObject var history: ClipboardHistory
     @State private var searchText = ""
 
@@ -79,8 +80,6 @@ struct AirClipboardView: View {
 
                         ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
                             let isLocked = AppEnvironment.shared.licenseStatus == .free && index >= 3
-
-                            // Novo: determinar o último item não fixado
                             let firstUnpinnedID = filteredItems.first(where: { !$0.isPinned })?.id
                             let isMostRecent = item.id == firstUnpinnedID
 
@@ -102,6 +101,13 @@ struct AirClipboardView: View {
                                     )
                                     .disabled(isLocked)
                                     .help(isLocked ? LocalizedStringKey("upgrade_tooltip") : "")
+                                    .opacity(animateItemsOnAppear ? 1 : 0)
+                                    .offset(y: animateItemsOnAppear ? 0 : 20)
+                                    .animation(
+                                        .easeOut(duration: 0.5)
+                                            .delay(Double(index) * 0.02),
+                                        value: animateItemsOnAppear
+                                    )
                             }
                             .padding(.horizontal, 8)
                             .padding(.vertical, 4)
@@ -118,12 +124,23 @@ struct AirClipboardView: View {
                         }
                     }
                 }
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        animateItemsOnAppear = true
+                    }
+                }
             }
         }
         .frame(width: 400, height: 500)
         .background(Material.ultraThin)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(radius: 10)
+        .onAppear {
+            animateItemsOnAppear = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                animateItemsOnAppear = true
+            }
+        }
     }
 }
 
