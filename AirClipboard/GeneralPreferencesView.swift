@@ -12,6 +12,7 @@ struct GeneralPreferencesView: View {
     @AppStorage("playClickSound") private var playClickSound = true
     @AppStorage("launchAtLogin") private var launchAtLogin = false
     @AppStorage("shortcutKey") private var recordedShortcut = "⌃⌘V"
+    @AppStorage("enableShakeGesture") private var enableShakeGesture = true // 👈 Adicionado
 
     @State private var isRecordingShortcut = false
 
@@ -43,6 +44,9 @@ struct GeneralPreferencesView: View {
                             print("⚠️ Essa função requer macOS 13 ou superior")
                         }
                     }
+
+                preferenceSwitchRow(titleKey: "shake_to_open", isOn: $enableShakeGesture)
+                    
             }
 
             VStack(alignment: .leading, spacing: 8) {

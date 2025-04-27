@@ -19,7 +19,10 @@ class AppEnvironment: ObservableObject {
 
     // MARK: - Idioma
     @Published var selectedLanguage: String
-
+    
+    // MARK: - Shake Gesture
+    @AppStorage("enableShakeGesture") var enableShakeGesture: Bool = true
+    
     var locale: Locale {
         switch selectedLanguage {
         case "pt": return Locale(identifier: "pt_BR")

@@ -72,3 +72,4 @@ license_status_pro = "Pro version activated.";
 license_status_pro_lifetime = "Lifetime license activated.";
 license_upgrade_button = "Get Pro Version";
 "trial_expired_message" = "Trial period ended. Get Pro to continue.";
+shake_to_open = "Shake mouse to open ɅirClipboard";

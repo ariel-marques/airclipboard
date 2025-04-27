@@ -40,6 +40,9 @@ class ShakeGestureDetector {
     }
 
     private func handleMouseMovement(_ event: NSEvent) {
+        // 👉 Verifica se a opção está ativada nas Preferências
+        guard AppEnvironment.shared.enableShakeGesture else { return }
+        
         guard NSEvent.modifierFlags.contains(.shift) else {
             lastPosition = nil
             movementHistory.removeAll()
