@@ -68,7 +68,7 @@ struct PreferencesView: View {
             .padding(24)
         }
         .environment(\.locale, environment.locale) // 🌍 Aplica idioma dinamicamente
-        .frame(minWidth: 620, minHeight: 420)
+        .frame(minWidth: 620, minHeight: 500)
     }
 
     @ViewBuilder
@@ -88,4 +88,8 @@ struct PreferencesView: View {
             AboutPreferencesView()
         }
     }
+}
+
+#Preview{
+    PreferencesView()
 }
