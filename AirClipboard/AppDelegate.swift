@@ -24,6 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         applyLaunchAtLogin()
         configureMainWindow()
         registerGlobalHotkey()
+        ShakeGestureDetector.shared.startMonitoring()
     }
 
     private func configureMainWindow() {
