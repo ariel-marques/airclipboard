@@ -12,7 +12,8 @@ struct GeneralPreferencesView: View {
     @AppStorage("playClickSound") private var playClickSound = true
     @AppStorage("launchAtLogin") private var launchAtLogin = false
     @AppStorage("shortcutKey") private var recordedShortcut = "⌃⌘V"
-    @AppStorage("enableShakeGesture") private var enableShakeGesture = true // 👈 Adicionado
+    @AppStorage("enableShakeGesture") private var enableShakeGesture = true
+    @AppStorage("selectedShakeModifier") private var selectedShakeModifier = "shift"
 
     @State private var isRecordingShortcut = false
 
@@ -45,9 +46,28 @@ struct GeneralPreferencesView: View {
                         }
                     }
 
+                Divider()
+
                 preferenceSwitchRow(titleKey: "shake_to_open", isOn: $enableShakeGesture)
-                    
+
+                if enableShakeGesture {
+                    Picker(LocalizedStringKey("shake_modifier_label"), selection: $selectedShakeModifier) {
+                        Text(LocalizedStringKey("modifier_shift")).tag("shift")
+                        Text(LocalizedStringKey("modifier_command")).tag("command")
+                        Text(LocalizedStringKey("modifier_option")).tag("option")
+                    }
+                    .pickerStyle(.menu)
+                    .padding(.top, 8)
+
+                    Text("shake_modifier_description")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.top, 2)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
+
+            Divider()
 
             VStack(alignment: .leading, spacing: 8) {
                 HStack {

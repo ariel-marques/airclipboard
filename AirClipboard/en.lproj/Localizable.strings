@@ -72,4 +72,12 @@ license_status_pro = "Pro version activated.";
 license_status_pro_lifetime = "Lifetime license activated.";
 license_upgrade_button = "Get Pro Version";
 "trial_expired_message" = "Trial period ended. Get Pro to continue.";
-shake_to_open = "Shake mouse to open ɅirClipboard";
+// Shake Gesture Settings
+"shake_to_open" = "Shake the mouse to open ɅirClipboard";
+"shake_modifier_label" = "Modifier key for shake";
+"shake_modifier_description" = "Choose which key must be held while shaking the mouse to open the app.";
+
+// Modifier Options
+modifier_shift = "⇧ Shift";
+modifier_command = "⌘ Command";
+modifier_option = "⌥ Option";

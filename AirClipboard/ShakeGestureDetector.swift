@@ -15,7 +15,7 @@ class ShakeGestureDetector {
     private var lastShakeTime: Date = .distantPast
     private var movementHistory: [(time: Date, delta: CGFloat)] = []
 
-    private let shakeThreshold: CGFloat = 40.0
+    private let shakeThreshold: CGFloat = 50.0
     private let requiredShakeCount = 8
     private let shakeTimeWindow: TimeInterval = 0.5
     private let cooldownDuration: TimeInterval = 1.5
@@ -40,10 +40,15 @@ class ShakeGestureDetector {
     }
 
     private func handleMouseMovement(_ event: NSEvent) {
-        // 👉 Verifica se a opção está ativada nas Preferências
-        guard AppEnvironment.shared.enableShakeGesture else { return }
-        
-        guard NSEvent.modifierFlags.contains(.shift) else {
+        let environment = AppEnvironment.shared
+
+        guard environment.enableShakeGesture else {
+            lastPosition = nil
+            movementHistory.removeAll()
+            return
+        }
+
+        guard isModifierKeyPressed(selectedModifier: environment.shakeModifier) else {
             lastPosition = nil
             movementHistory.removeAll()
             return
@@ -84,13 +89,26 @@ class ShakeGestureDetector {
     }
 
     private func triggerShakeDetected() {
-        print("🎯 Shake forte detectado com SHIFT!")
+        print("🎯 Shake detectado com modificador correto!")
 
         DispatchQueue.main.async {
             if let controller = AppDelegate.shared?.floatingWindowController {
                 controller.showWindow(nil)
                 NSApp.activate(ignoringOtherApps: true)
             }
+        }
+    }
+
+    private func isModifierKeyPressed(selectedModifier: String) -> Bool {
+        switch selectedModifier {
+        case "shift":
+            return NSEvent.modifierFlags.contains(.shift)
+        case "command":
+            return NSEvent.modifierFlags.contains(.command)
+        case "option":
+            return NSEvent.modifierFlags.contains(.option)
+        default:
+            return false
         }
     }
 }

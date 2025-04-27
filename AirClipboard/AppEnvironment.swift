@@ -22,7 +22,23 @@ class AppEnvironment: ObservableObject {
     
     // MARK: - Shake Gesture
     @AppStorage("enableShakeGesture") var enableShakeGesture: Bool = true
-    
+    @AppStorage("shakeModifier") var shakeModifier: String = "shift"
+    enum ShakeModifierKey: String, CaseIterable {
+        case shift, command, option
+    }
+
+    @AppStorage("selectedShakeModifier") var selectedShakeModifier: String = ShakeModifierKey.shift.rawValue
+
+    var currentShakeModifier: NSEvent.ModifierFlags {
+        switch ShakeModifierKey(rawValue: selectedShakeModifier) ?? .shift {
+        case .shift:
+            return .shift
+        case .command:
+            return .command
+        case .option:
+            return .option
+        }
+    }
     var locale: Locale {
         switch selectedLanguage {
         case "pt": return Locale(identifier: "pt_BR")
