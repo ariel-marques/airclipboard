@@ -18,7 +18,7 @@ struct ShortcutFieldView: View {
                 .frame(width: 100, height: 22)
 
             // Centraliza o texto
-            Text(recordedShortcut.isEmpty ? "Digitar atalho" : recordedShortcut)
+            Text(recordedShortcut.isEmpty ? LocalizedStringKey("shortcut_placeholder") : LocalizedStringKey(recordedShortcut))
                 .font(.system(size: 11))
                 .foregroundColor(.primary)
                 .frame(width: 100, height: 22, alignment: .center)
@@ -40,7 +40,7 @@ struct ShortcutFieldView: View {
                         .font(.system(size: 10))
                 }
                 .buttonStyle(.plain)
-                .help("Cancelar")
+                .help(LocalizedStringKey("shortcut_clear_help"))
                 .padding(.trailing, 4)
             }
 
@@ -56,6 +56,6 @@ struct ShortcutFieldView: View {
                 .frame(width: 0, height: 0)
             }
         }
-        .help("Clique para definir um atalho global.\nSugestões: ⌃⌘V, ⌥⌘C, ⇧⌘X")
+        .help(LocalizedStringKey("shortcut_field_help"))
     }
 }
