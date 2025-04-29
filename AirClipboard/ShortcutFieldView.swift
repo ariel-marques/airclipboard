@@ -11,51 +11,74 @@ struct ShortcutFieldView: View {
     @Binding var isRecording: Bool
     @Binding var recordedShortcut: String
 
+    @State private var tempShortcut: String = ""
+    @State private var isHoveringX: Bool = false
+
     var body: some View {
-        ZStack(alignment: .trailing) {
-            RoundedRectangle(cornerRadius: 4)
-                .stroke(Color.gray.opacity(0.4), lineWidth: 1)
-                .frame(width: 100, height: 22)
+        HStack(spacing: 6) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 4)
+                    .stroke(Color.gray.opacity(0.4), lineWidth: 1)
+                    .frame(width: 140, height: 24)
 
-            // Centraliza o texto
-            Text(recordedShortcut.isEmpty ? LocalizedStringKey("shortcut_placeholder") : LocalizedStringKey(recordedShortcut))
-                .font(.system(size: 11))
-                .foregroundColor(.primary)
-                .frame(width: 100, height: 22, alignment: .center)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    isRecording = true
-                    recordedShortcut = ""
+                Text(displayedText)
+                    .font(.system(size: 12))
+                    .foregroundColor(.primary)
+                    .frame(width: 130, height: 24)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        tempShortcut = recordedShortcut
+                        isRecording = true
+                        recordedShortcut = ""
+                    }
+
+                if isRecording {
+                    KeyboardEventCatcher(
+                        isRecording: $isRecording,
+                        shortcut: $recordedShortcut
+                    ) {
+                        HotkeyManager.shared.updateShortcut(recordedShortcut)
+                    }
+                    .frame(width: 0, height: 0)
                 }
+            }
 
-            // Botão "X" no canto
             if isRecording || !recordedShortcut.isEmpty {
                 Button(action: {
-                    recordedShortcut = ""
+                    if isRecording {
+                        recordedShortcut = tempShortcut
+                    } else {
+                        recordedShortcut = ""
+                    }
                     isRecording = false
-                    HotkeyManager.shared.updateShortcut("")
+                    HotkeyManager.shared.updateShortcut(recordedShortcut)
                 }) {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.gray)
-                        .font(.system(size: 10))
+                        .foregroundColor(.secondary)
+                        .opacity(isHoveringX ? 1.0 : 0.5)
+                        .font(.system(size: 13))
                 }
                 .buttonStyle(.plain)
-                .help(LocalizedStringKey("shortcut_clear_help"))
-                .padding(.trailing, 4)
-            }
-
-            // Captura de atalho invisível
-            if isRecording {
-                KeyboardEventCatcher(
-                    isRecording: $isRecording,
-                    shortcut: $recordedShortcut
-                ) {
-                    HotkeyManager.shared.updateShortcut(recordedShortcut)
-                    print("✅ Novo atalho definido: \(recordedShortcut)")
+                .onHover { hovering in
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isHoveringX = hovering
+                    }
                 }
-                .frame(width: 0, height: 0)
+                .padding(.trailing, 2)
             }
         }
-        .help(LocalizedStringKey("shortcut_field_help"))
+        .help("shortcut_field_help")
+    }
+
+    private var displayedText: String {
+        if isRecording {
+            if recordedShortcut.isEmpty {
+                return isHoveringX ? NSLocalizedString("cancel_button_label", comment: "") : NSLocalizedString("shortcut_field_placeholder", comment: "")
+            } else {
+                return recordedShortcut
+            }
+        } else {
+            return recordedShortcut.isEmpty ? NSLocalizedString("shortcut_field_placeholder", comment: "") : recordedShortcut
+        }
     }
 }
