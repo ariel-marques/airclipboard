@@ -120,7 +120,7 @@ class ShakeGestureDetector {
         let size: CGFloat = 60
         let duration: TimeInterval = 0.35
 
-        let screenFrame = NSScreen.main?.frame ?? .zero
+        // let screenFrame = NSScreen.main?.frame ?? .zero
         let mouseLocation = NSEvent.mouseLocation
 
         let window = NSWindow(

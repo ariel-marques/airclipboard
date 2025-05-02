@@ -94,3 +94,16 @@ enum ClipboardItemType: Codable, Equatable {
         }
     }
 }
+
+extension ClipboardItemType {
+    var faviconURL: URL? {
+        guard case .text(let value) = self,
+              let url = URL(string: value),
+              url.scheme?.hasPrefix("http") == true,
+              let host = url.host else {
+            return nil
+        }
+
+        return URL(string: "https://\(host)/favicon.ico")
+    }
+}

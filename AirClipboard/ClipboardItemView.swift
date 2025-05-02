@@ -66,6 +66,7 @@ struct ClipboardItemView: View {
         Text(relativeDateFormatter.string(for: item.date) ?? "")
             .font(.caption2)
             .foregroundColor(.secondary)
+            .opacity(0.5)
             .padding(.top, 6)
             .padding(.trailing, 10)
     }
@@ -76,6 +77,7 @@ struct ClipboardItemView: View {
                 Text(LocalizedStringKey("file_group_count \(urls.count)"))
                     .font(.caption)
                     .foregroundColor(.secondary)
+                    .opacity(0.5)
                     .padding(.top, 6)
                     .padding(.leading, 10)
             }
@@ -142,12 +144,30 @@ struct ClipboardItemView: View {
         switch item.type {
         case .text(let value):
             let formattedValue = value.replacingOccurrences(of: "\\s{2,}", with: " ", options: .regularExpression)
-            HStack {
+            HStack(spacing: 8) {
+                
+                if let favicon = item.type.faviconURL {
+                    AsyncImage(url: favicon) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                                .cornerRadius(3)
+                        default:
+                            Image(systemName: "link")
+                                .foregroundColor(.accentColor)
+                                .frame(width: 20, height: 20)
+                        }
+                    }
+                }
+
                 Text(formattedValue)
                     .multilineTextAlignment(.leading)
                     .lineLimit(3)
                     .truncationMode(.tail)
                     .frame(maxWidth: 335, alignment: .leading)
+
                 Spacer()
             }
 
@@ -185,6 +205,7 @@ struct ClipboardItemView: View {
                         Text("+\(urls.count - 6)")
                             .font(.caption)
                             .foregroundColor(.secondary)
+                            .opacity(0.5)
                             .padding(.leading, 1)
                             .help(urls.dropFirst(6).map { $0.lastPathComponent }.joined(separator: "\n"))
                     }
