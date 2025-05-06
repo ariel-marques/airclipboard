@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Upgrade to ɅirClipboard Pro</title>
+  <meta name="description" content="Upgrade to the full version of AirClipboard for macOS.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .checkout-hero {
+      padding: 5rem 1rem;
+      text-align: center;
+    }
+
+    .btn-checkout {
+      font-size: 1.25rem;
+      padding: 0.75rem 2rem;
+    }
+
+    footer {
+      padding: 2rem 0;
+      background-color: #eee;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="checkout-hero bg-white">
+    <div class="container">
+      <img src="assets/img/AirClipboard-icon.png" alt="AirClipboard Icon" width="100" class="mb-4">
+      <h1 class="display-5 fw-bold">Upgrade to ɅirClipboard Pro</h1>
+      <p class="lead text-muted mb-4">Unlock unlimited history, preferences, and all premium features — forever.</p>
+
+      <button
+        class="btn btn-primary btn-checkout"
+        data-theme="none"
+        data-paddle-product="PADDLE_PRODUCT_ID">
+        Buy Now — $14.99 USD
+      </button>
+
+      <p class="text-muted mt-3 mb-0"><small>One-time payment · Lifetime access · Up to 3 devices</small></p>
+    </div>
+  </header>
+
+  <footer class="text-center text-muted bg-white mt-5">
+    <div class="container">
+      <ul class="list-unstyled text-center mb-2">
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/refund.html">Refund Policy</a></li>
+      </ul>
+      <p>Made with ❤️ by Ariel Marques · AirClipboard © 2025</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+  <script>
+    Paddle.Setup({ vendor: PADDLE_VENDOR_ID });
+  </script>
+</body>
+
+</html>
