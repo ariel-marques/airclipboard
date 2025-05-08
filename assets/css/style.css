@@ -1,0 +1,266 @@
+/* San Francisco font fallback */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.hero-section {
+    background: url('../img/bg-gradient.jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    padding: 60px 20px;
+}
+
+.hero-icon {
+    width: 200px;
+    height: auto;
+}
+
+.hero-title {
+    font-size: 3rem;
+    /* Default: Headline 88 */
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    /* Callout 40 */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-note {
+    font-size: 1.1rem;
+    /* Medium 72 adaptado */
+}
+
+.hero-fineprint {
+    font-size: 0.9rem;
+    /* Fineprint 24 */
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.btn {
+    border-radius: 63px !important;
+    width: 200px !important;
+    padding: 15px !important;
+}
+
+.clipboard-headline {
+    font-size: 2.75rem;
+    /* Headline 88 */
+    font-weight: 700;
+}
+
+.clipboard-description {
+    font-size: 1.8rem;
+    max-width: 700px;
+    font-weight: 550;
+    line-height: 1.4;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #A855F7, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* HIstory section */
+.history-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.text-highlight {
+    color: #5EEAD4;
+}
+
+.history-description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #ccc;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .history-title {
+        font-size: 2rem;
+    }
+
+    .history-description {
+        font-size: 1.05rem;
+    }
+}
+
+/* Imagem maior no desktop */
+.history-image {
+    max-width: 100%;
+}
+
+@media (min-width: 992px) {
+    .history-image {
+        max-width: 120%;
+        /* aumenta além do container col-6 */
+        transform: scale(1.1);
+        /* opcional: dá uma sensação de destaque */
+    }
+}
+
+/* HIstory section  END*/
+
+/* quick paste section */
+
+.quick-title {
+    font-size: 3.75rem;
+    /* Large 120 adaptado */
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.quick-description {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #222;
+    max-width: 500px;
+}
+
+.quick-image {
+    max-width: 90%;
+    height: auto;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .quick-title {
+        font-size: 2.25rem;
+    }
+
+    .quick-description {
+        font-size: 1rem;
+    }
+
+    .quick-image {
+        max-width: 100%;
+    }
+}
+
+.quick-image-left {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin-left: 0;
+}
+
+@media (min-width: 992px) {
+    .quick-image-left {
+        margin-left: -80px;
+        /* empurra a imagem pra fora do container */
+    }
+}
+
+@media (max-width: 991px) {
+    .quick-image-left {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* quick paste section END*/
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .clipboard-headline {
+        font-size: 2rem;
+    }
+
+    .clipboard-description {
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-note,
+    .hero-fineprint {
+        font-size: 0.95rem;
+    }
+}
+/* pin */
+.pin-description {
+    font-size: 1.8rem;
+    font-weight: 550;
+    line-height: 1.4;
+}
+.dark-text-brown {
+    color: #5E1E2B;
+}
+
+.dark-text-orange {
+    color: #F5B561;
+}
+
+/* short cut */
+.shortcut-title {
+    font-size: 3.75rem; /* Large 120 */
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  
+  .text-yellow {
+    color: #FBCB50;
+  }
+  
+  .text-pink {
+    color: #D87297;
+  }
+  
+  .text-salmon {
+    color: #E36658;
+  }
+  .text-apple-blue {
+    color: #007AFF;
+  }
+  .shortcut-description {
+    font-size: 1.8rem;
+    font-weight: 550;
+    line-height: 1.4;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .shortcut-title {
+      font-size: 2.25rem;
+      text-align: center;
+    }
+  
+    .shortcut-description {
+      font-size: 1rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .shortcut-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  @media (min-width: 992px) {
+    .shortcut-image {
+      max-width: 650px; /* você pode ajustar esse valor */
+    }
+  }
+  

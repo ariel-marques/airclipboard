@@ -18,94 +18,144 @@
 
   <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-  
+
   <title>ɅirClipboard — Clipboard Manager for macOS</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      background-color: #f9f9f9;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-
-    .hero {
-      padding: 5rem 1rem;
-      text-align: center;
-    }
-    .badge-price {
-      border-color: #007aff;
-      border: 1px solid;
-      color: #007aff;
-      font-size: 0.75rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 0.25rem;
-    }
-    .badge-pro {
-      background-color: #007aff;
-      color: white;
-      font-size: 0.75rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 0.25rem;
-    }
-
-    .screenshot {
-      max-width: 100%;
-      border-radius: 1rem;
-    }
-    footer {
-      padding: 2rem 0;
-      background-color: #eee;
-      font-size: 0.875rem;
-    }
-  </style>
+  <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-  <header class="hero bg-light">
-    <div class="container">
-      <img src="assets/img/AirClipboard-icon.png" class="img-fluid" alt="AirClipboard Icon" width="100" class="mb-3">
-      <h1 class="display-5 fw-bold">ɅirClipboard for macOS</h1>
-      <p class="lead">A smarter clipboard manager. Lightweight, fast and native for macOS.</p>
-      <div class="d-flex justify-content-center flex-column align-items-center gap-2 mt-4">
-        <div class="d-flex gap-3">
-          <a href="#" class="btn btn-primary px-4 d-flex justify-content-center align-items-center">Download Free</a>
-          <!--a href="#" class="btn btn-outline-primary px-4"
+  <!--a href="#" class="btn btn-outline-primary px-4"
             onclick="Paddle.Checkout.open({ product: 000000 }); return false;">
             Upgrade to Pro<br>
             <small class="text-muted">$14.99 · Lifetime access</small>
           </a-->
-          <a href="#" class="btn btn-outline-primary px-4">
-            Upgrade to Pro<br><small>$14.99 · Lifetime access</small>
-          </a>
-        </div>
-        <small class="text-muted">One-time purchase · $14.99 USD · Up to 3 Macs</small>
-        <small class="text-muted">Requires <strong>macOS 13 Ventura or later</strong> · Apple Silicon & Intel compatible</small>
-      </div>
+
+  <!-- Hero Header -->
+  <header class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="container">
+      <img src="assets/img/AirClipboard-icon.png" alt="AirClipboard icon" class="hero-icon mb-4">
+
+      <h1 class="hero-title mb-3">AirClipboard for macOS</h1>
+      <p class="hero-note mb-5">A smarter clipboard manager. Lightweight, fast and native for macOS.</p>
+
+      <a href="#" class="btn btn-primary btn-lg mb-4 shadow">Buy AirClipboard</a>
+
+      <p class="hero-note">One-time purchase · $14.99 USD · Up to 3 Macs</p>
+      <p class="hero-fineprint mt-5 pt-5">Requires macOS 13 Ventura or later · Apple Silicon &amp; Intel compatible</p>
+      <p class="hero-fineprint">
+        Already have an AirClipboard license? <a href="#" class="text-white text-decoration-underline">Download the app.</a>
+      </p>
     </div>
   </header>
 
-  <section class="py-5">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <h2 class="h4">Clipboard reimagined for focus and speed</h2>
-          <p>Access your last copied items near the cursor, organize your clipboard with text, images and files — all with a native and elegant UI.</p>
-          <ul>
-            <li>History for text, files and images</li>
-            <li>Quick Paste, Pin and Delete actions</li>
-            <li>⌘+⇧+V shortcut to invoke</li>
-            <li>Custom global keyboard shortcut</li>
-            <li>Gesture trigger: shake your mouse to open</li>
-            <li>Free version with limitations</li>
-            <li><span class="badge-pro"><strong>Pro</strong></span> unlocks full history & preferences</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <img src="assets/img/airclipboard-app.png" class="img-fluid" alt="Screenshot of AirClipboard" class="AirClipboard App">
-        </div>
-      </div>
+  <!-- Section: Clipboard Reimagined -->
+  <section class="py-5 text-center bg-white">
+    <div class="container py-5">
+
+      <h2 class="clipboard-headline my-4">
+        <span class="gradient-text">Clipboard reimagined for focus and speed</span>
+      </h2>
+
+      <img src="assets/img/airclipboard-app.png" alt="AirClipboard app screenshot" class="img-fluid mb-4">
+
+      <p class="clipboard-description mx-auto px-3">
+        Access your last copied items near the cursor, organize your clipboard with text, images and files — all with a native and elegant UI.
+      </p>
+
     </div>
   </section>
+    
+ <!-- Section: History -->
+<section class="py-5 bg-dark text-white">
+  <div class="container">
+    <div class="row justify-content-center text-center py-5">
+
+      <!-- Title + Image -->
+      <div class="col-lg-10">
+        <div class="row align-items-center justify-content-center flex-wrap-reverse">
+
+          <!-- Text -->
+          <div class="col-lg-6 text-lg-start text-center">
+            <h2 class="history-title mb-4">
+              History for <span class="text-highlight">text</span>, <span class="text-highlight">files</span><br>and <span class="text-highlight">images.</span>
+            </h2>
+          </div>
+
+          <!-- Image -->
+          <div class="col-lg-6 mb-4 mb-lg-0 text-center">
+            <img src="assets/img/items.png" alt="Clipboard items preview" class="img-fluid history-image">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Description below both -->
+      <div class="col-lg-10">
+        <p class="history-description mt-4">
+          Save everything you copy — from text to images and files — in one place.<br class="d-none d-md-block">
+          Effortless history that keeps your workflow organized and accessible.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Section: Quick Actions -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+
+      <!-- Imagem à esquerda -->
+      <div class="col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
+        <img src="assets/img/pin.png" alt="Quick actions preview" class="img-fluid quick-image-left">
+      </div>
+
+      <!-- Texto à direita -->
+      <div class="col-lg-6 text-center text-lg-start">
+        <h2 class="quick-title mb-4">
+          <span class="dark-text-brown">Quick</span> <span class="dark-text-orange">Paste,</span><br>
+          <span class="dark-text-orange">Pin and</span> <span class="dark-text-brown">Delete<br> actions</span>
+        </h2>
+      </div>
+      <div class="col-lg-12">
+        <p class="pin-description mt-4 text-center">
+          Instantly paste, pin important items, or delete what you no longer need.<br class="d-none d-md-block">
+          Your clipboard, finally under your full control.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Global Shortcut -->
+<section class="py-5" style="background-color: #99F6E4;">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+
+      <!-- Texto à esquerda -->
+      <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+        <h2 class="shortcut-title mb-4">
+          <span class="text-apple-blue">Global</span><br>
+          <span class="text-pink">Shortcut</span><br>
+          <span class="text-apple-blue">to</span> <span class="text-salmon">invoke</span>
+        </h2>
+        <p class="shortcut-description">
+          Open ɅirClipboard instantly with a keyboard shortcut of your choice.<br>
+          Stay in flow and access your clipboard history without missing a beat.
+        </p>
+      </div>
+
+      <!-- Imagem à direita -->
+      <div class="col-lg-6 text-center">
+        <img src="assets/img/shortcut.png" alt="Keyboard shortcut" class="img-fluid shortcut-image">
+      </div>
+
+    </div>
+  </div>
+</section>
 
   <footer class="text-center text-muted bg-white">
     <div class="container">
@@ -119,10 +169,10 @@
     </div>
   </footer>
   <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
-<script>
-  // Substitua pelo seu Vendor ID assim que a Paddle liberar
-  Paddle.Setup({ vendor: 123456 }); // coloque seu real vendor ID aqui
-</script>
+  <script>
+    // Substitua pelo seu Vendor ID assim que a Paddle liberar
+    Paddle.Setup({ vendor: 123456 }); // coloque seu real vendor ID aqui
+  </script>
 </body>
 
 </html>
