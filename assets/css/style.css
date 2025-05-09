@@ -75,7 +75,7 @@ body {
 
 /* HIstory section */
 .history-title {
-    font-size: 4.5rem;
+    font-size: 4.3rem;
     font-weight: 700;
     line-height: 1.2;
 }
@@ -110,7 +110,7 @@ body {
 
 @media (min-width: 992px) {
     .history-image {
-        max-width: 120%;
+        max-width: 130%;
         /* aumenta além do container col-6 */
         transform: scale(1.1);
         /* opcional: dá uma sensação de destaque */
@@ -122,8 +122,7 @@ body {
 /* quick paste section */
 
 .quick-title {
-    font-size: 3.75rem;
-    /* Large 120 adaptado */
+    font-size: 4.75rem;
     font-weight: 800;
     line-height: 1.2;
 }
@@ -220,7 +219,7 @@ body {
 
 /* short cut */
 .shortcut-title {
-    font-size: 3.75rem; /* Large 120 */
+    font-size: 4.75rem; /* Large 120 */
     font-weight: 800;
     line-height: 1.2;
   }
@@ -266,7 +265,7 @@ body {
   
   @media (min-width: 992px) {
     .shortcut-image {
-      max-width: 650px; /* você pode ajustar esse valor */
+      max-width: 660px;
     }
   }
   
