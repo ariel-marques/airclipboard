@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://airclipboard.app/help" />
+  <meta name="description" content="ɅirClipboard is a modern clipboard manager for macOS. Lightweight, fast and privacy-focused.">
+  <meta name="keywords" content="macOS clipboard manager, clipboard history mac, AirClipboard, clipboard app Mac, clipboard utility, ɅirClipboard">
+  <meta name="author" content="Ariel Marques">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="ɅirClipboard for macOS" />
+  <meta property="og:description" content="A smarter, native clipboard manager for macOS. Lightweight and privacy-friendly." />
+  <meta property="og:image" content="https://airclipboard.app/assets/img/og-image.jpg" />
+  <meta property="og:url" content="https://airclipboard.app/help" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <title>Help · ɅirClipboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #fefefe;
+      color: #111;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #007AFF;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .section-description {
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .help-img {
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      max-width: 100%;
+      margin: 1.5rem 0;
+    }
+
+    .title-header {
+      background: #5EEAD4;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      font-weight: 800;
+    }
+
+    .bg-header-box {
+      background-color: #F4ADAD;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .anchor-link {
+      scroll-margin-top: 100px;
+    }
+
+    .active-link {
+      font-weight: 700;
+      color: #F4ADAD;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: static;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="py-5">
+    <div class="container">
+
+      <!-- Título com destaque -->
+      <div class="bg-header-box text-center">
+        <h1 class="display-5 mb-3"><span class="title-header">Need help getting started?</span></h1>
+        <p class="text-dark mb-0">You're in the right place — install, allow permissions, and master the basics of ɅirClipboard.</p>
+      </div>
+
+      <div class="row">
+        <!-- Sidebar de navegação -->
+        <div class="col-lg-3 sidebar">
+          <nav>
+            <a href="#installation">🔽 Installation</a>
+            <a href="#permissions">🔐 Permissions</a>
+            <a href="#shortcut">🎹 Global Shortcut</a>
+            <a href="#plans">📦 Free vs Pro</a>
+            <a href="#faq">💡 Common Questions</a>
+          </nav>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="col-lg-9">
+
+          <!-- Installation -->
+          <section id="installation" class="anchor-link">
+            <h2 class="section-title">🔽 How to Install</h2>
+            <p class="section-description">
+              After downloading the app, open the <strong>.dmg</strong> file and drag ɅirClipboard to your <strong>Applications</strong> folder.
+              If macOS shows a security prompt, right-click the app and select “Open” to confirm execution.
+            </p>
+            <!-- <img src="assets/img/help-install.png" alt="Installation UI" class="help-img"> -->
+          </section>
+
+          <!-- Permissions -->
+          <section id="permissions" class="anchor-link">
+            <h2 class="section-title">🔐 Required Permissions</h2>
+            <p class="section-description">
+              To operate fully, ɅirClipboard needs:
+              <ul>
+                <li><strong>Accessibility</strong> – to simulate paste and detect interface interactions</li>
+                <li><strong>Input Monitoring</strong> – to monitor your clipboard activity securely</li>
+              </ul>
+              You can activate these in <em>System Settings > Privacy & Security</em>. The app will guide you if they're missing.
+            </p>
+            <!-- <img src="assets/img/help-permissions.png" alt="macOS Privacy Settings" class="help-img"> -->
+          </section>
+
+          <!-- Shortcut -->
+          <section id="shortcut" class="anchor-link">
+            <h2 class="section-title">🎹 Global Shortcut</h2>
+            <p class="section-description">
+              The default shortcut is <code>⌘ Shift V</code>.  
+              You can customize it anytime via Preferences inside the app.  
+              Prefer something else? Create your own global hotkey.
+            </p>
+            <!-- <img src="assets/img/help-shortcut.png" alt="Shortcut Config" class="help-img"> -->
+          </section>
+
+          <!-- Plans -->
+          <section id="plans" class="anchor-link">
+            <h2 class="section-title">📦 Free vs Pro</h2>
+            <p class="section-description">
+              The free version gives you access to the last 3 copied items.  
+              Upgrade to Pro to unlock unlimited history, full content types, and advanced features.
+            </p>
+          </section>
+
+          <!-- FAQ -->
+          <section id="faq" class="anchor-link">
+            <h2 class="section-title">💡 Common Questions</h2>
+
+            <p class="section-description"><strong>Q: The app doesn’t open after I install it.</strong><br>
+              A: Right-click the app, choose “Open” once to bypass macOS security.
+            </p>
+
+            <p class="section-description"><strong>Q: The global shortcut doesn't respond.</strong><br>
+              A: Check if ɅirClipboard has Accessibility permissions enabled in your system settings.
+            </p>
+
+            <p class="section-description"><strong>Q: My clipboard history is not updating.</strong><br>
+              A: Ensure Input Monitoring is granted, then restart the app.
+            </p>
+
+          </section>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-section py-5 text-center text-white">
+    <div class="container py-5">
+
+      <!-- Botão principal -->
+      <a href="#" class="btn btn-primary btn-lg mb-3">Buy AirClipboard</a>
+
+      <!-- Link de download -->
+      <p class="mb-4 py-5">
+        Already have an AirClipboard license?
+        <a href="#" class="text-white text-decoration-underline">Download the app.</a>
+      </p>
+
+      <!-- Menu de links -->
+      <ul class="list-inline small text-muted mb-4 py-5">
+        <li class="list-inline-item"><a href="https://airclipboard.app/terms" class="footer-link">Terms of Service</a></li>
+        <li class="list-inline-item text-white">|</li>
+        <li class="list-inline-item"><a href="https://airclipboard.app/privacy" class="footer-link">Privacy Policy</a></li>
+        <li class="list-inline-item text-white">|</li>
+        <li class="list-inline-item"><a href="https://airclipboard.app/refund" class="footer-link">Refund Policy</a></li>
+        <li class="list-inline-item text-white">|</li>
+        <li class="list-inline-item"><a href="https://airclipboard.app/why" class="footer-link">Why AirClipboard?</a></li>
+      </ul>
+
+      <!-- Créditos -->
+      <p class="text-white small mb-0">
+        Made with <span style="color: #f87171;">❤️</span> by Ariel Marques · AirClipboard © 2025
+      </p>
+
+    </div>
+  </footer>
+</body>
+</html>
