@@ -55,10 +55,11 @@ body {
 
 @media (min-width: 768px) {
     .ui-img {
-    max-width: 45%;
-    height: auto;
+        max-width: 45%;
+        height: auto;
+    }
 }
-}
+
 .clipboard-description {
     font-size: 1.8rem;
     max-width: 700px;
@@ -85,10 +86,9 @@ body {
 }
 
 .history-description {
-    font-size: 1.25rem;
+    font-size: 1.8rem;
     line-height: 1.6;
     color: #ccc;
-    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -146,7 +146,7 @@ body {
     }
 
     .quick-description {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
 
     .quick-image {
@@ -156,14 +156,14 @@ body {
 
 .quick-image-left {
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
     height: auto;
     margin-left: 0;
 }
 
 @media (min-width: 992px) {
     .quick-image-left {
-        margin-left: -80px;
+        margin-left: 40px;
         /* empurra a imagem pra fora do container */
     }
 }
@@ -203,12 +203,14 @@ body {
         font-size: 0.95rem;
     }
 }
+
 /* pin */
 .pin-description {
     font-size: 1.8rem;
     font-weight: 550;
     line-height: 1.4;
 }
+
 .dark-text-brown {
     color: #5E1E2B;
 }
@@ -217,55 +219,163 @@ body {
     color: #F5B561;
 }
 
+@media (max-width: 768px) {
+    .pin-description {
+        font-size: 1.05rem;
+    }
+}
+
 /* short cut */
 .shortcut-title {
-    font-size: 4.75rem; /* Large 120 */
+    font-size: 4.75rem;
+    /* Large 120 */
     font-weight: 800;
     line-height: 1.2;
-  }
-  
-  .text-yellow {
+}
+
+.text-yellow {
     color: #FBCB50;
-  }
-  
-  .text-pink {
+}
+
+.text-pink {
     color: #D87297;
-  }
-  
-  .text-salmon {
+}
+
+.text-salmon {
     color: #E36658;
-  }
-  .text-apple-blue {
+}
+
+.text-apple-blue {
     color: #007AFF;
-  }
-  .shortcut-description {
+}
+
+.shortcut-description {
     font-size: 1.8rem;
     font-weight: 550;
     line-height: 1.4;
-  }
-  
-  /* Responsivo */
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .shortcut-title {
-      font-size: 2.25rem;
-      text-align: center;
+        font-size: 2.25rem;
+        text-align: center;
     }
-  
+
     .shortcut-description {
-      font-size: 1rem;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
+        font-size: 1rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
-  }
-  .shortcut-image {
+}
+
+.shortcut-image {
     max-width: 100%;
     height: auto;
-  }
-  
-  @media (min-width: 992px) {
+}
+
+@media (min-width: 992px) {
     .shortcut-image {
-      max-width: 660px;
+        max-width: 660px;
     }
-  }
-  
+}
+
+/* Gesture Trigger */
+.gesture-title {
+    font-size: 4.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.gradient-text-hot {
+    background: linear-gradient(90deg, #E1704F 0%, #CF617E 52%, #6B84BC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.gesture-description {
+    font-size: 1.8rem;
+    font-weight: 550;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .gesture-title {
+        font-size: 2.25rem;
+        text-align: center;
+    }
+
+    .gesture-description {
+        font-size: 1rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .gesture-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Footer */
+.footer-section {
+  background-color: #1E1E23;
+  color: #ccc;
+}
+
+.footer-link {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/*search section*/
+.bg-search-section {
+    background-color: #F4ADAD;
+}
+
+.search-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.text-search {
+  color: #5EEAD4;
+}
+
+.search-image-bottom {
+  width: 100%;
+  max-width: 800px;
+  margin-top: -20px;
+  margin-bottom: -47px;
+}
+.search-description {
+font-size: 1.8rem;
+font-weight: 550;
+line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .search-title {
+        font-size: 2rem;
+    }
+
+    .search-description {
+        font-size: 1.05rem;
+    }
+}
+
+.gradient-trial-text {
+  background: linear-gradient(90deg, #FBCB50, #F59E6E, #F472B6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 600;
+}
