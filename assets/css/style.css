@@ -86,10 +86,9 @@ body {
 }
 
 .history-description {
-    font-size: 1.25rem;
+    font-size: 1.8rem;
     line-height: 1.6;
     color: #ccc;
-    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -147,7 +146,7 @@ body {
     }
 
     .quick-description {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
 
     .quick-image {
@@ -218,6 +217,12 @@ body {
 
 .dark-text-orange {
     color: #F5B561;
+}
+
+@media (max-width: 768px) {
+    .pin-description {
+        font-size: 1.05rem;
+    }
 }
 
 /* short cut */
@@ -328,4 +333,49 @@ body {
 .footer-link:hover {
   text-decoration: underline;
   color: #fff;
+}
+
+/*search section*/
+.bg-search-section {
+    background-color: #F4ADAD;
+}
+
+.search-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.text-search {
+  color: #5EEAD4;
+}
+
+.search-image-bottom {
+  width: 100%;
+  max-width: 800px;
+  margin-top: -20px;
+  margin-bottom: -47px;
+}
+.search-description {
+font-size: 1.8rem;
+font-weight: 550;
+line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .search-title {
+        font-size: 2rem;
+    }
+
+    .search-description {
+        font-size: 1.05rem;
+    }
+}
+
+.gradient-trial-text {
+  background: linear-gradient(90deg, #FBCB50, #F59E6E, #F472B6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 600;
 }
