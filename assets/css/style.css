@@ -87,6 +87,7 @@ body {
 
 .history-description {
     font-size: 1.8rem;
+    font-weight: 550;
     line-height: 1.6;
     color: #ccc;
     margin-left: auto;
@@ -347,14 +348,18 @@ body {
 }
 
 .text-search {
-  color: #5EEAD4;
+  color: #008080;
+}
+
+.text-soft-white {
+  color: #f5fffb;
 }
 
 .search-image-bottom {
   width: 100%;
   max-width: 800px;
   margin-top: -20px;
-  margin-bottom: -47px;
+  margin-bottom: -50px;
 }
 .search-description {
 font-size: 1.8rem;
