@@ -3,6 +3,75 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+
+.sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar a {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #007AFF;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.help-img {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    max-width: 100%;
+    margin: 1.5rem 0;
+}
+
+.title-header {
+    background: #54bdb3;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    font-weight: 800;
+}
+
+.bg-header-box {
+    background-color: #F4ADAD;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.anchor-link {
+    scroll-margin-top: 100px;
+}
+
+.active-link {
+    font-weight: 700;
+    color: #F4ADAD;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+}
+
 .hero-section {
     background: url('../img/bg-gradient.jpg') no-repeat center center;
     background-size: cover;
@@ -48,8 +117,7 @@ body {
 }
 
 .clipboard-headline {
-    font-size: 2.75rem;
-    /* Headline 88 */
+    font-size: 3rem;
     font-weight: 700;
 }
 
@@ -239,7 +307,7 @@ body {
 }
 
 .text-pink {
-    color: #D87297;
+    color: #ff94bb;
 }
 
 .text-salmon {

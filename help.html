@@ -32,74 +32,6 @@
         background-color: #fefefe;
         color: #111;
     }
-
-    .sidebar {
-        position: sticky;
-        top: 100px;
-    }
-
-    .sidebar a {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        color: #007AFF;
-        text-decoration: none;
-    }
-
-    .sidebar a:hover {
-        text-decoration: underline;
-    }
-
-    .section-title {
-        font-size: 2rem;
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-    }
-
-    .section-description {
-        font-size: 1.1rem;
-        color: #333;
-    }
-
-    .help-img {
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        max-width: 100%;
-        margin: 1.5rem 0;
-    }
-
-    .title-header {
-        background: #5EEAD4;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        display: inline-block;
-        font-weight: 800;
-    }
-
-    .bg-header-box {
-        background-color: #F4ADAD;
-        border-radius: 1rem;
-        padding: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .anchor-link {
-        scroll-margin-top: 100px;
-    }
-
-    .active-link {
-        font-weight: 700;
-        color: #F4ADAD;
-    }
-
-    @media (max-width: 768px) {
-        .sidebar {
-            position: static;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-    }
 </style>
 </head>
 
@@ -107,7 +39,16 @@
 
     <main class="py-5">
         <div class="container">
-
+            <div class="pb-4">
+                <a href="/" title="Back to Home" class="d-inline-flex align-items-center text-decoration-none" style="gap: 0.5rem;">
+                  <svg width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.8699 5.81177C17.7657 3.93885 16.1173 2.23798 13.8049 2.13013L13.5718 2.12402H6.42822C3.91567 2.1242 2.12416 3.99141 2.12402 5.99976V14.0002L2.13013 14.1882C2.23779 16.1236 3.99428 17.8759 6.42822 17.876H13.5718L13.8049 17.8699C16.1173 17.7621 17.7657 16.0612 17.8699 14.1882L17.876 14.0002V5.99976L17.8699 5.81177ZM20 14.0002L19.9927 14.3091C19.8259 17.3734 17.1932 19.837 13.9026 19.9927L13.5718 20H6.42822C2.98487 19.9999 0.179616 17.4754 0.00732422 14.3091L0 14.0002V5.99976C0.000178917 2.69047 2.87368 0.000205053 6.42822 0H13.5718L13.9026 0.00732422C17.303 0.168273 19.9998 2.79374 20 5.99976V14.0002Z" fill="black" />
+                    <path d="M5 15L8.86666 5H11.1412L15 15H12.8118L10.0353 6.96812H9.89411L7.07844 15H5Z" fill="black" />
+                    <path d="M5 15L8.86666 5H11.1412L15 15H12.8118L10.0353 6.96812H9.89411L7.07844 15H5Z" fill="black" fill-opacity="0.2" />
+                  </svg>
+                  <span class="text-dark fw-medium">Back to home</span>
+                </a>
+              </div>
             <!-- Título com destaque -->
             <div class="bg-header-box text-center">
                 <h1 class="display-5 mb-3"><span class="title-header">Need help getting started?</span></h1>
