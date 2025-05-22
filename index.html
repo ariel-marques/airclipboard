@@ -5,32 +5,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://airclipboard.app/" />
-  <meta name="description" content="ɅirClipboard is a modern clipboard manager for macOS. Lightweight, fast and privacy-focused.">
+  <meta name="description" content="AirClipboard is a modern clipboard manager for macOS. Lightweight, fast and privacy-focused.">
   <meta name="keywords" content="macOS clipboard manager, clipboard history mac, AirClipboard, clipboard app Mac, clipboard utility, ɅirClipboard, air clipboard, , air clipboard app">
   <meta name="author" content="Ariel Marques">
   <meta name="robots" content="index, follow">
 
-  <meta property="og:title" content="ɅirClipboard for macOS" />
+  <meta property="og:title" content="AirClipboard for macOS" />
   <meta property="og:description" content="A smarter, native clipboard manager for macOS. Lightweight and privacy-friendly." />
   <meta property="og:image" content="https://airclipboard.app/assets/img/og-image.jpg" />
   <meta property="og:url" content="https://airclipboard.app/" />
   <meta property="og:type" content="website" />
-
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self' https:;
+  script-src 'self' 'unsafe-inline' https://cdn.paddle.com https://unpkg.com https://cdn.jsdelivr.net;
+  style-src 'self' 'unsafe-inline' https:;
+  img-src 'self' data: https:;
+  frame-src 'self' https://sandbox-buy.paddle.com https://buy.paddle.com;
+  connect-src 'self' https://sandbox-api.paddle.com https://api.paddle.com;
+">
   <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
-  <title>ɅirClipboard — Clipboard Manager for macOS</title>
+  <title>AirClipboard — Clipboard Manager for macOS</title>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="assets/css/style.css" rel="stylesheet">
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script type="text/javascript">
+      Paddle.Environment.set('sandbox');
+  Paddle.Initialize({
+  token: 'test_644496b515ac90b37c628f222fa', // replace with a client-side token
+});
+</script>
 </head>
 
 <body>
-  <!--a href="#" class="btn btn-outline-primary px-4"
-            onclick="Paddle.Checkout.open({ product: 000000 }); return false;">
-            Upgrade to Pro<br>
-            <small class="text-muted">$14.99 · Lifetime access</small>
-          </a-->
 
   <!-- Hero Header -->
   <header class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="min-height: 100vh;"  data-aos="fade-out" data-aos-delay="100" data-aos-duration="800">
@@ -39,8 +48,9 @@
 
       <h1 class="hero-title mb-3">AirClipboard</h1>
       <p class="hero-note mb-5">A smarter clipboard manager. Lightweight, fast and native for macOS.</p>
-
-      <a href="#" class="btn btn-primary btn-lg mb-4 shadow">Buy AirClipboard</a>
+      <button data-items='[{"priceId":"pri_01jvn4p400q53fvr6a0zz529rf","quantity":1}]' class="paddle_button btn btn-primary btn-lg mb-4 shadow">
+      Buy ɅirClipboard
+  </button>
 
       <p class="hero-note">One-time purchase · $14.99 USD · Up to 3 Macs</p>
       <p class="hero-fineprint mt-5 pt-5">Requires macOS 13 Ventura or later · Apple Silicon &amp; Intel compatible</p>
@@ -54,6 +64,7 @@
   </header>
 
   <!-- Section: Clipboard Reimagined -->
+  <div id="paddle-checkout-container"></div>
   <section class="py-5 text-center bg-white">
     <div class="container py-5" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
 
@@ -245,12 +256,8 @@
 
     </div>
   </footer>
-
-  <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    // Substitua pelo seu Vendor ID assim que a Paddle liberar
-    Paddle.Setup({ vendor: 123456 }); // coloque seu real vendor ID aqui
     AOS.init();
   </script>
 </body>
